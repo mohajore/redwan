@@ -1,0 +1,34 @@
+@font-face {
+    font-family: TajawalRegular;
+    src: url(../../fonts/Tajawal-Regular.ttf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: TajawalBold;
+    src: url(../../fonts/Tajawal-Bold.ttf);
+    font-display: swap;
+}
+
+//-*----------  START FONTS BASE  ----------*/
+
+$tajawalBold-font: "TajawalBold", sans-serif;
+$tajawalRegular-font: "TajawalRegular", sans-serif;
+$base-fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+//-*----------  END FONTS BASE  ----------*/
+
+//%-*=====  End of GLOBAL STYLE SECTION  ======*-//
+
+$main-font: $tajawalRegular-font, $base-fonts;
+
+$primary-color: #006335;
+$secondary-color: #333333;
+// $secondary-text-color: #4d4d4d;
+$secondary-text-color: gray;
+
+// $primary-text-color: #2d2d2d;
+// $primary-background-color: white;
+// $secondary-background-color: #1d252c;
+
+$default-font-size: 1rem;

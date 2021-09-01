@@ -1,0 +1,73 @@
+@import "../../../abstract/mixins";
+
+.products-table {
+    button {
+        background-color: $primary-color;
+        color: #fff;
+        margin: 0 20px;
+    }
+    .react-bootstrap-table {
+        overflow-x: scroll;
+        .table {
+            table-layout: inherit;
+            thead {
+                background-color: $primary-color;
+                color: #fff;
+            }
+            tbody,
+            td,
+            tfoot,
+            th,
+            thead,
+            tr {
+                white-space: nowrap;
+            }
+            td {
+                font-size: 14px;
+                a {
+                    color: $primary-color;
+                    text-decoration: underline !important;
+                    font-weight: bold;
+                }
+            }
+            .qrCod {
+                width: 50px !important;
+                height: 50px !important;
+            }
+        }
+    }
+}
+
+@include respond(large-phone) {
+    .products-table {
+        button {
+            background-color: $primary-color;
+            color: #fff;
+            margin: 0 20px;
+        }
+        .react-bootstrap-table {
+            overflow-x: scroll;
+            .table {
+                table-layout: inherit;
+                tbody,
+                td,
+                tfoot,
+                th,
+                thead,
+                tr {
+                    white-space: nowrap;
+                }
+                td {
+                    font-size: 14px;
+                    a {
+                        font-size: 12px;
+                    }
+                }
+                .qrCod {
+                    width: 35px !important;
+                    height: 35px !important;
+                }
+            }
+        }
+    }
+}

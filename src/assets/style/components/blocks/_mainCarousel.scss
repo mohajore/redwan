@@ -1,0 +1,112 @@
+@import "../../abstract/mixins";
+
+.carousel-section {
+    .carousel-caption {
+        text-align: initial !important;
+        margin: auto;
+        width: fit-content;
+        bottom: 32% !important;
+        max-width: 75%;
+
+        span {
+            font-size: 3.1rem;
+        }
+        p {
+            font-size: 3.1rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+    }
+    .carousel-item {
+        img {
+            height: 500px;
+            object-fit: cover;
+        }
+    }
+}
+
+@include respond(laptop) {
+    .carousel-section {
+        .carousel-caption {
+            bottom: 32% !important;
+
+            span {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+@include respond(small-laptop) {
+    .carousel-section {
+        .carousel-caption {
+            bottom: 25% !important;
+
+            span {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+@include respond(tablet) {
+    .carousel-section {
+        .carousel-caption {
+            bottom: 25% !important;
+
+            span {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1.5rem;
+            }
+        }
+        .carousel-item {
+            img {
+                height: 400px;
+            }
+        }
+    }
+}
+
+@include respond(large-phone) {
+    .carousel-section {
+        .carousel-caption {
+            bottom: 30% !important;
+            span {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1.5rem;
+            }
+        }
+        .carousel-item {
+            img {
+                height: 400px;
+            }
+        }
+    }
+}
+@include respond(phone) {
+    .carousel-section {
+        .carousel-caption {
+            bottom: 35% !important;
+            span {
+                font-size: 1.3rem;
+            }
+            p {
+                font-size: 1.3rem;
+            }
+        }
+        .carousel-item {
+            img {
+                height: 400px;
+            }
+        }
+    }
+}

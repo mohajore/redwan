@@ -1,0 +1,62 @@
+.YouCanTrustUs {
+    background: url("../../../../../Rectangle\ 36451.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    // height: 400px;
+    padding: 70px 0;
+    margin-bottom: 100px;
+    .logo {
+        max-width: 250px;
+    }
+    .YouCanTrustUs__text {
+        p {
+            color: #fff;
+            font-size: 2.5rem;
+
+            &:last-child {
+                margin-right: 120px;
+            }
+        }
+    }
+}
+
+@include respond(small-laptop) {
+    .YouCanTrustUs {
+        padding: 70px 0;
+        margin-bottom: 100px;
+        .logo {
+            max-width: 200px;
+        }
+        .YouCanTrustUs__text {
+            p {
+                font-size: 1.8rem;
+
+                &:last-child {
+                    margin-right: 80px;
+                }
+            }
+        }
+    }
+}
+
+@include respond(tablet) {
+    .YouCanTrustUs {
+        text-align: center;
+
+        padding: 70px 0;
+        margin-bottom: 50px;
+        .logo {
+            max-width: 200px;
+            margin-bottom: 40px;
+        }
+        .YouCanTrustUs__text {
+            p {
+                font-size: 1.8rem;
+
+                &:last-child {
+                    margin-right: 00px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,203 @@
+@import "../../../abstract/mixins";
+@import "../../blocks/makUp";
+.Agricultural__products {
+    background-color: #ebebeb;
+    padding: 50px;
+    .Agricultural__products__title {
+        h3 {
+            color: $primary-color;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        a {
+            background-color: #006335;
+            color: #fff !important;
+            -webkit-clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+            clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 10px;
+
+            width: 100%;
+            padding: 20px;
+            margin-top: 64px;
+
+            img {
+                width: 30px;
+                height: 30px;
+                object-fit: scale-down;
+            }
+        }
+    }
+    .Agricultural__products-pic {
+        cursor: pointer;
+        width: 100%;
+        height: 396px;
+        margin-bottom: 22px;
+        &:hover {
+            .single-img__info {
+                opacity: 1;
+                transition: ease-in-out 0.5s;
+                a {
+                    height: 55px;
+                    opacity: 1;
+                    transition: ease-in-out 0.5s;
+                }
+            }
+
+            .box-gradient {
+                background: linear-gradient(0deg, #006335 11%, rgba(0, 99, 53, 0) 78%);
+                transition: ease-in-out 0.5s;
+            }
+        }
+        .box-gradient {
+            background: #006335;
+            background: linear-gradient(0deg, #006335 11%, rgba(0, 99, 53, 0) 68%);
+            height: 100%;
+            width: 100%;
+            opacity: 1;
+            position: relative;
+            transition: ease-in-out 0.5s;
+        }
+        .single-img__info {
+            opacity: 1;
+            transition: ease-in-out 0.5s;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: auto;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+            div {
+                color: white;
+                p {
+                    font-size: 1.8rem;
+                    line-height: 1;
+                    margin-bottom: 5px;
+                }
+                a {
+                    height: 0;
+                    opacity: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    column-gap: 15px;
+                    font-size: 1rem;
+                    color: #fff;
+                    transition: ease-in-out 0.5s;
+                }
+            }
+        }
+    }
+}
+
+@include respond(smallDesktop) {
+    .Agricultural__products {
+        .Agricultural__products__title {
+            .Agricultural__products-pic {
+                height: 334px;
+            }
+        }
+    }
+}
+
+@include respond(laptop) {
+    .Agricultural__products {
+        .Agricultural__products-pic {
+            height: 274px;
+        }
+    }
+}
+
+@include respond(small-laptop) {
+    .Agricultural__products {
+        .Agricultural__products__title {
+            h3 {
+                font-size: 1.7rem;
+            }
+            a {
+                column-gap: 10px;
+                padding: 15px;
+                margin-top: 34px;
+
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+        .Agricultural__products-pic {
+            height: 172px;
+            margin-bottom: 22px;
+            &:hover {
+                .single-img__info {
+                    a {
+                        height: 30px;
+                    }
+                }
+            }
+            .single-img__info {
+                padding: 10px;
+                div {
+                    p {
+                        font-size: 1.5rem;
+                        margin-bottom: 5px;
+                    }
+                    a {
+                        column-gap: 15px;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond(large-phone) {
+    .Agricultural__products {
+        .Agricultural__products__title {
+            height: 185px;
+
+            h3 {
+                font-size: 1.7rem;
+            }
+            a {
+                column-gap: 10px;
+                padding: 15px;
+                margin-top: 34px;
+
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+        .Agricultural__products-pic {
+            height: 172px;
+            margin-bottom: 22px;
+            &:hover {
+                .single-img__info {
+                    a {
+                        height: 30px;
+                    }
+                }
+            }
+            .single-img__info {
+                padding: 10px;
+                div {
+                    p {
+                        font-size: 1.5rem;
+                        margin-bottom: 5px;
+                    }
+                    a {
+                        column-gap: 15px;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
