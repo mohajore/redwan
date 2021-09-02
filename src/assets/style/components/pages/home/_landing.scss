@@ -68,6 +68,8 @@
     column-gap: 15px;
     margin-bottom: -85px;
     box-shadow: 0 0 5px 0px silver;
+    position: relative;
+    z-index: 99;
     span {
         color: $secondary-color;
         font-weight: bold;

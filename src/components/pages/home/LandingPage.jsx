@@ -27,7 +27,9 @@ function LandingPage() {
                     {/* landing contents start  */}
                     <Col md={6} className="m-auto">
                         <div className="landing-contents">
-                            <h2>COMPASS SOCIAL STUDENT</h2>
+                            <h2>
+                                COMPASS SOCIAL <br /> STUDENT
+                            </h2>
                             <h3>CURRCICULUM</h3>
 
                             <hr />
