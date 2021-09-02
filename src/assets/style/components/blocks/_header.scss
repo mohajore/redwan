@@ -1,6 +1,10 @@
 @import "../../abstract/mixins";
 .header {
-    padding-top: 20px;
+    padding-top: 10px;
+    position: absolute;
+    z-index: 99999;
+    width: 100%;
+    top: 0;
     .header-contents {
         padding: 10px 0;
 
@@ -102,128 +106,157 @@
                     }
                 }
             }
-        }
-    }
-    // push menu start
-    .mobile-push-menu {
-        display: none;
-        color: $primary-color;
-        ul {
-            padding: 0;
-            li {
-                div {
-                    padding-bottom: 10px;
+
+            .dropdown .dropdown-menu {
+                // padding-right: 10px;
+                // padding-left: 10px;
+                background-color: $primary-color !important;
+                border-radius: 10px;
+                -webkit-transform: translate(-55px, 50px) !important;
+                transform: translate(-55px, 50px) !important;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: -14px;
+                    left: calc(50% - 15px);
+                    clear: both;
+                    width: 0;
+                    height: 0;
+                    border-right: 15px solid transparent;
+                    border-bottom: 15px solid $primary-color;
+                    border-left: 15px solid transparent;
+                }
+                .dropdown-item {
+                    color: #fff;
+                    border-bottom: 1px solid rgba(51, 51, 51, 0.21176470588235294);
+                    &:hover {
+                        color: #fff;
+                        background-color: #1678a7 !important;
+                    }
                 }
             }
         }
     }
-
-    .bm-overlay {
-        top: 0;
-        left: 0;
-        z-index: 9888888 !important;
-    }
-
-    .bm-burger-button {
-        position: relative !important;
-        margin-right: auto;
-    }
-
-    .bm-menu-wrap {
-        top: 0;
-        left: 0;
-        z-index: 9999999999 !important;
-        width: 40% !important;
-        background-color: $primary-color;
-    }
-
-    .sideMenu_logo {
-        text-align: center;
-        background-color: #fff;
-
-        img {
-            margin: auto;
-            padding: 8px 0;
-        }
-
-        &:focus {
-            outline: none !important;
-        }
-    }
-
-    .sideMenu_List {
-        margin-top: 20px;
-        padding: 0 10px;
-
-        span,
-        a,
-        button {
-            display: block;
-            padding: 10px;
-            color: white !important;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            span {
-                padding: 5px;
-                border-radius: 50px;
-                width: 35px;
-                height: 35px;
-                background-color: $primary-color;
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-                border: 0;
-                font-size: 13px;
-                i {
-                    font-size: 10px;
-                    // margin-left: 20px;
-                    // margin-right: 3px;
-                }
-            }
-        }
-
-        span {
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        li {
-            text-transform: capitalize;
-            border-bottom: 1px solid #ffffff6e;
-
-            &:not(:last-of-type) {
-                margin-bottom: 1rem;
-            }
-        }
-
-        button {
-            width: 100%;
-            text-align: left;
-            background: transparent;
-        }
-    }
-
-    .sideMenu_loginButtons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 10px;
-
-        span {
-            width: 50%;
-            text-align: center;
-            border: 0;
-
-            &:first-child {
-                padding-right: 5px;
-                border-right: 2px solid white;
-            }
-        }
-    }
-    // push menu end
 }
+// push menu start
+.mobile-push-menu {
+    display: none;
+    color: $primary-color;
+    ul {
+        padding: 0;
+        li {
+            div {
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+
+.bm-overlay {
+    top: 0;
+    left: 0;
+    z-index: 9888888 !important;
+}
+
+.bm-burger-button {
+    position: relative !important;
+    margin-right: auto;
+}
+
+.bm-menu-wrap {
+    top: 0;
+    left: 0;
+    z-index: 9999999999 !important;
+    width: 40% !important;
+    background-color: $primary-color;
+}
+
+.sideMenu_logo {
+    text-align: center;
+    background-color: #fff;
+
+    img {
+        margin: auto;
+        padding: 8px 0;
+    }
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+.sideMenu_List {
+    margin-top: 20px;
+    padding: 0 10px;
+
+    span,
+    a,
+    button {
+        display: block;
+        padding: 10px;
+        color: white !important;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            padding: 5px;
+            border-radius: 50px;
+            width: 35px;
+            height: 35px;
+            background-color: $primary-color;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border: 0;
+            font-size: 13px;
+            i {
+                font-size: 10px;
+                // margin-left: 20px;
+                // margin-right: 3px;
+            }
+        }
+    }
+
+    span {
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    li {
+        text-transform: capitalize;
+        border-bottom: 1px solid #ffffff6e;
+
+        &:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    button {
+        width: 100%;
+        text-align: left;
+        background: transparent;
+    }
+}
+
+.sideMenu_loginButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+
+    span {
+        width: 50%;
+        text-align: center;
+        border: 0;
+
+        &:first-child {
+            padding-right: 5px;
+            border-right: 2px solid white;
+        }
+    }
+}
+// push menu end
 
 @include respond(small-laptop) {
     .header .header-contents .header-list {
@@ -273,4 +306,25 @@
     .mobile-push-menu .bm-icon {
         font-size: 22px;
     }
+}
+@include respond(large-phone) {
+    // push menu start
+    .bm-menu-wrap {
+        width: 60% !important;
+    }
+
+    .bm-menu-wrap {
+        width: 60% !important;
+    }
+
+    .sideMenu_logo img {
+        max-width: 150px;
+    }
+
+    .sideMenu_List a,
+    .sideMenu_List button,
+    .sideMenu_List span {
+        font-size: 14px;
+    }
+    // push menu end
 }
