@@ -1,11 +1,12 @@
 import { BrowserRouter, Link, Route, Switch, withRouter } from "react-router-dom";
-import "./App.css";
-
+import "./assets/style/main.scss";
+import Header from "./components/blocks/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
     return (
         <div className="App">
             <BrowserRouter basename="/">
-                {/* <Header /> */}
+                <Header />
                 {/* <Switch>
               <Route component={Home} path="/" exact />
           </Switch>
