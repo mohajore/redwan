@@ -108,6 +108,12 @@
         margin-bottom: 20px;
     }
 }
+@include respond(tablet) {
+    .big-sale__card__header img {
+        width: 85%;
+        margin-bottom: -125px;
+    }
+}
 @include respond(phone) {
     .big-sale__card__header span {
         padding: 5px 15px;
@@ -121,5 +127,9 @@
         img {
             width: 15px;
         }
+    }
+    .big-sale__card__header img {
+        width: 100%;
+        margin-bottom: -95px;
     }
 }

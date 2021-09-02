@@ -7,9 +7,6 @@ function LandingPage() {
     const closeMenu = () => {
         setMenuOpen(false);
     };
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
     return (
         <div className="landing-page">
             <img src="/images/Group 506.png" alt="l" className="img-rectangle" />
@@ -81,7 +78,7 @@ function LandingPage() {
                     <span>Categories</span>
                     <InputGroup size="sm" className="">
                         <InputGroup.Text id="inputGroup-sizing-sm">
-                            <img src="/images/fi-rr-search.svg" />
+                            <img src="/images/fi-rr-search.svg" alt="l" />
                         </InputGroup.Text>
                         <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                         <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>

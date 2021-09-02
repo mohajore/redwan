@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { Col, Container, FormControl, InputGroup, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { slide as Menu } from "react-burger-menu";
-function LandingPage() {
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+function BigSale() {
     return (
         <div className="big-sale">
             <Container>
@@ -66,4 +64,4 @@ function LandingPage() {
     );
 }
 
-export default LandingPage;
+export default BigSale;
