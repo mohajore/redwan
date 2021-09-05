@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, DropdownButton, Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { a } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 
 class Header extends Component {
@@ -23,16 +23,16 @@ class Header extends Component {
                         </a>
                         <ul className="flex header-list">
                             <li>
-                                <Link to="/">HOME</Link>
+                                <a href="/">HOME</a>
                             </li>
                             <li>
-                                <Link to="/AboutPage">ABOUT</Link>
+                                <a href="/AboutPage">ABOUT</a>
                             </li>
                             <li>
-                                <Link to="/">Teacher's Area</Link>
+                                <a href="/">Teacher's Area</a>
                             </li>
                             <li>
-                                <Link to="/ContactUs">Contact Us</Link>
+                                <a href="/ContactUs">Contact Us</a>
                             </li>
                         </ul>
                         <div className="cart-fav flex">
@@ -47,7 +47,7 @@ class Header extends Component {
                         </div>
                         <div className="user-auth-Buttons">
                             {/* <div className="auth-Buttons">
-                                <Link to="/">LOGIN</Link> / <Link to="/">SIGNUP</Link>
+                                <a href="/">LOGIN</a> / <a href="/">SIGNUP</a>
                             </div> */}
 
                             <div className="user-dropdown flex">
@@ -72,9 +72,9 @@ class Header extends Component {
                         <div className="mobile-push-menu">
                             <Menu isOpen={menuOpen} customBurgerIcon={<i className="fa fa-bars" />} customCrossIcon={<i className="fa fa-times croosIconMenu" />}>
                                 <div className="sideMenu_logo">
-                                    <Link to="/" onClick={() => this.closeMenu()}>
+                                    <a href="/" onClick={() => this.closeMenu()}>
                                         <img src="/images/red.eng.log.svg" alt="logo" />
-                                    </Link>
+                                    </a>
                                 </div>
 
                                 <div className="sideMenu_List">
@@ -86,25 +86,25 @@ class Header extends Component {
                                             </div>
                                         </li>
                                         <li>
-                                            <Link to="/" onClick={() => this.closeMenu()}>
+                                            <a href="/" onClick={() => this.closeMenu()}>
                                                 HOME
-                                            </Link>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <Link to="/AboutPage" onClick={() => this.closeMenu()}>
+                                            <a href="/AboutPage" onClick={() => this.closeMenu()}>
                                                 ABOUT
-                                            </Link>
+                                            </a>
                                         </li>
                                         <li>
-                                            <Link to="/" onClick={() => this.closeMenu()}>
+                                            <a href="/" onClick={() => this.closeMenu()}>
                                                 Teacher's Area
-                                            </Link>
+                                            </a>
                                         </li>
                                         <li>
-                                            <Link to="/ContactUs" onClick={() => this.closeMenu()}>
+                                            <a href="/ContactUs" onClick={() => this.closeMenu()}>
                                                 Contact Us
-                                            </Link>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
