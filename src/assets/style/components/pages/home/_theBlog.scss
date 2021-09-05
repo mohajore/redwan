@@ -1,0 +1,99 @@
+@import "../../../abstract/mixins";
+.The-blog {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0px;
+  .the-blog__background-image {
+    position: absolute;
+    z-index: -50;
+    bottom: -606px;
+    left: -663px;
+  }
+  .the-blog__section {
+    margin-top: 50px;
+    border: 1px solid rgb(235, 232, 232);
+    border-radius: 25px;
+    padding: 30px 20px;
+    background-color: #fff;
+    height: 520px;
+    .the-blog__image-container {
+      .the-blog__left-section__image {
+        width: 100%;
+        margin-bottom: 40px;
+      }
+    }
+    .The-blog__section__title {
+      color: $primary-color;
+      font-size: 18px;
+      font-family: $main-font-bold;
+    }
+    .the-blog__section__date {
+      color: $forth-text-color;
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: -20px;
+      margin-bottom: 40px;
+      height: 20px;
+    }
+    .The-blog__section__description {
+      font-size: 14px;
+      color: #606060;
+    }
+  }
+}
+@include respond(smallDesktop) {
+  .The-blog {
+    .the-blog__section {
+      height: 480px;
+    }
+    .the-blog__background-image {
+      bottom: -183px;
+      left: -424px;
+      width: 648px;
+    }
+  }
+}
+@include respond(laptop) {
+  .The-blog {
+    .the-blog__section {
+      height: 440px;
+    }
+    .the-blog__background-image {
+      bottom: -313px;
+      left: -519px;
+      width: 722px;
+    }
+  }
+}
+@include respond(small-laptop) {
+  .The-blog {
+    padding: 60px 0px;
+    .the-blog__section {
+      height: 400px;
+    }
+    .the-blog__background-image {
+      bottom: -316px;
+      left: -481px;
+      width: 687px;
+    }
+  }
+}
+@include respond(tablet) {
+  .The-blog {
+    padding: 60px 0px;
+    .the-blog__section {
+      height: 460px;
+    }
+    .the-blog__background-image {
+      left: -481px;
+      width: 687px;
+    }
+  }
+}
+@include respond(large-phone) {
+  .The-blog {
+    .the-blog__background-image {
+      display: none;
+    }
+  }
+}
