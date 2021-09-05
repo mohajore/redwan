@@ -1,0 +1,41 @@
+.forget-password {
+    color: $primary-color;
+    font-size: 12px;
+    float: right;
+    margin-top: -10px;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        color: $third-text-color;
+        transition: ease-in-out 0.3s;
+    }
+}
+.auth {
+    .submit-button {
+        margin-top: 50px;
+    }
+    p {
+        color: $secondary-color;
+        font-size: 14px;
+        a {
+            color: $primary-color;
+            font-weight: bold;
+            &:hover {
+                color: $third-text-color;
+                transition: ease-in-out 0.3s;
+            }
+        }
+    }
+    .contact-us__contents img {
+        width: 425px;
+    }
+}
+@include respond(tablet) {
+    .contact-us__contents {
+        padding: 25px;
+    }
+    .contact-us__contents img {
+        display: none;
+    }
+}

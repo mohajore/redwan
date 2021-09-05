@@ -26,13 +26,13 @@ class Header extends Component {
                                 <Link to="/">HOME</Link>
                             </li>
                             <li>
-                                <Link to="/">ABOUT</Link>
+                                <Link to="/AboutPage">ABOUT</Link>
                             </li>
                             <li>
                                 <Link to="/">Teacher's Area</Link>
                             </li>
                             <li>
-                                <Link to="/">Contact Us</Link>
+                                <Link to="/ContactUs">Contact Us</Link>
                             </li>
                         </ul>
                         <div className="cart-fav flex">
@@ -62,9 +62,9 @@ class Header extends Component {
                                         </div>
                                     }
                                 >
-                                    <Dropdown.Item>Action</Dropdown.Item>
-                                    <Dropdown.Item>Another action</Dropdown.Item>
-                                    <Dropdown.Item>Something else</Dropdown.Item>
+                                    <Dropdown.Item>Profile</Dropdown.Item>
+                                    <Dropdown.Item>My Books</Dropdown.Item>
+                                    <Dropdown.Item>Logout</Dropdown.Item>
                                 </DropdownButton>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ class Header extends Component {
                                         </li>
 
                                         <li>
-                                            <Link to="/" onClick={() => this.closeMenu()}>
+                                            <Link to="/AboutPage" onClick={() => this.closeMenu()}>
                                                 ABOUT
                                             </Link>
                                         </li>
@@ -102,7 +102,7 @@ class Header extends Component {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/" onClick={() => this.closeMenu()}>
+                                            <Link to="/ContactUs" onClick={() => this.closeMenu()}>
                                                 Contact Us
                                             </Link>
                                         </li>

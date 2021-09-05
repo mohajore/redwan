@@ -93,10 +93,11 @@
     }
 }
 @include respond(small-laptop) {
+    .auth .contact-us__contents img,
     .contact-us__contents img {
         top: -100px;
         right: -20px;
-        width: 315px;
+        width: 315px !important;
     }
     .contact-details {
         margin-top: 0px;
