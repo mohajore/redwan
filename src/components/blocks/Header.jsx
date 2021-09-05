@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 
 class Header extends Component {
-    state = { menuOpen: false };
+    state = { menuOpen: false, otherHeader: false };
+    componentDidMount() {
+        if (window.location.pathname === "/") {
+            this.setState({
+                otherHeader: true,
+            });
+        }
+    }
     render() {
-        const { menuOpen } = this.state;
+        const { menuOpen, otherHeader } = this.state;
         return (
-            <div className="header">
+            <div className="header" style={otherHeader ? { position: "absolute" } : null}>
                 <Container>
                     <div className="header-contents flex">
                         <a href="/">

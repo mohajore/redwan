@@ -2,8 +2,8 @@
 
 .text-input-block {
     .input-group {
-        background-color: #ccd3cc !important;
-        border-radius: 15px;
+        background-color: #f1f1f1 !important;
+        border-radius: 10px;
         padding: 8px 15px;
         margin-bottom: 15px !important;
         img {
@@ -11,19 +11,19 @@
             object-fit: scale-down;
             height: 25px;
         }
-
         .form-control,
         textarea {
             height: auto;
             resize: none;
             padding: 0;
             border: 0;
-            background-color: #ccd3cc !important;
+            background-color: #f1f1f1 !important;
             color: $primary-color !important;
             font-weight: bold;
             font-size: 18px;
             &::placeholder {
                 font-size: 18px;
+                color: #bcbcbc;
             }
         }
         textarea {
