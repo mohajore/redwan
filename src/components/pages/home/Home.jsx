@@ -3,6 +3,7 @@ import AboutBlock from "./AboutBlock";
 import LandingPage from "./LandingPage";
 import BigSale from "./BigSale";
 import NewTitles from "./NewTitles";
+import BigTitle from "./BigTitle";
 
 class Home extends Component {
     render() {
@@ -13,6 +14,7 @@ class Home extends Component {
                 <BigSale />
 
                 <NewTitles />
+                <BigTitle />
             </div>
         );
     }
