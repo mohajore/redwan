@@ -4,6 +4,7 @@ import LandingPage from "./LandingPage";
 import BigSale from "./BigSale";
 import NewTitles from "./NewTitles";
 import BigTitle from "./BigTitle";
+import AgentOf from "./AgentOf";
 
 class Home extends Component {
     render() {
@@ -12,9 +13,9 @@ class Home extends Component {
                 <LandingPage />
                 <AboutBlock />
                 <BigSale />
-
                 <NewTitles />
                 <BigTitle />
+                <AgentOf />
             </div>
         );
     }
