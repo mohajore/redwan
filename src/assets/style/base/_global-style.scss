@@ -198,13 +198,12 @@ button:focus,
 
 .submit-button {
     display: block;
-    margin: auto;
     margin-bottom: 20px;
     background-color: $primary-color;
     color: #fff;
-    width: 80%;
-    border-radius: 5px;
-    padding: 3px;
+    min-width: 180px;
+    border-radius: 20px;
+    padding: 8px;
     transition: ease-in-out 0.4s;
     border: 1px solid $primary-color;
     &:hover {
