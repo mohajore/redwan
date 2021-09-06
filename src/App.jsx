@@ -7,21 +7,23 @@ import Footer from "./components/blocks/Footer";
 import ContactUs from "./components/pages/countactUs/ContactUs";
 import AboutPage from "./components/pages/aboutUS/AboutPage";
 import Login from "./components/pages/login/Login";
+import SignUp from "./components/pages/signup/Signup";
 function App() {
-    return (
-        <div className="App">
-            <BrowserRouter basename="/">
-                <Header />
-                <Switch>
-                    <Route component={Home} path="/" exact />
-                    <Route component={ContactUs} path="/ContactUs" exact />
-                    <Route component={AboutPage} path="/AboutPage" exact />
-                    <Route component={Login} path="/Login" exact />
-                </Switch>
-                <Footer />
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div className="App">
+      <BrowserRouter basename="/">
+        <Header />
+        <Switch>
+          <Route component={Home} path="/" exact />
+          <Route component={ContactUs} path="/ContactUs" exact />
+          <Route component={AboutPage} path="/AboutPage" exact />
+          <Route component={Login} path="/Login" exact />
+          <Route component={SignUp} path="/signup" exact />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
