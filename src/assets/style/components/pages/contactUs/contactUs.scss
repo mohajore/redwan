@@ -5,7 +5,7 @@
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     height: 120px;
-    width: 32%;
+    width: 40%;
     position: absolute;
     background: rgb(110, 177, 35);
     background: linear-gradient(270deg, rgba(110, 177, 35, 1) 0%, rgba(48, 149, 69, 1) 100%);
@@ -86,6 +86,13 @@
     }
 }
 
+// for favorites page
+
+.favorites-products {
+    margin-bottom: 55px;
+}
+// for favorites page end
+
 @include respond(laptop) {
     .contact-us__contents img {
         right: -15px;
@@ -108,7 +115,7 @@
 }
 @include respond(tablet) {
     .page-label {
-        width: 40%;
+        width: 45%;
     }
     .contact-details div .addresses-list li {
         margin-bottom: 15px;
@@ -125,5 +132,8 @@
         top: -25px;
         right: -20px;
         width: 150px;
+    }
+    .page-title {
+        font-size: 16px;
     }
 }

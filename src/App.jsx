@@ -7,6 +7,7 @@ import Footer from "./components/blocks/Footer";
 import ContactUs from "./components/pages/countactUs/ContactUs";
 import AboutPage from "./components/pages/aboutUS/AboutPage";
 import Login from "./components/pages/login/Login";
+import Favorites from "./components/pages/favorites/Favorites";
 function App() {
     return (
         <div className="App">
@@ -14,9 +15,10 @@ function App() {
                 <Header />
                 <Switch>
                     <Route component={Home} path="/" exact />
-                    <Route component={ContactUs} path="/ContactUs" exact />
-                    <Route component={AboutPage} path="/AboutPage" exact />
-                    <Route component={Login} path="/Login" exact />
+                    <Route component={ContactUs} path="/ContactUs" />
+                    <Route component={AboutPage} path="/AboutPage" />
+                    <Route component={Favorites} path="/Favorites" />
+                    <Route component={Login} path="/Login" />
                 </Switch>
                 <Footer />
             </BrowserRouter>

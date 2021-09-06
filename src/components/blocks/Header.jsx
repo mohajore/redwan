@@ -40,7 +40,7 @@ class Header extends Component {
                                 <img src="/images/fi-rr-shopping-cart.svg" alt="k" />
                                 <span>81</span>
                             </a>
-                            <a href="/" className="single-cart">
+                            <a href="/Favorites" className="single-cart">
                                 <img src="/images/fi-rr-heart.svg" alt="k" />
                                 <span>8</span>
                             </a>
