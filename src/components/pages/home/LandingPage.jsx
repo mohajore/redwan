@@ -25,14 +25,14 @@ function LandingPage() {
                     <Col md={6} className="m-auto">
                         <div className="landing-contents">
                             <h2>
-                                COMPASS SOCIAL <br /> STUDENT
+                                COMPASS <br /> SOCIAL STUDENT
                             </h2>
                             <h3>CURRCICULUM</h3>
 
                             <hr />
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
 
-                            <button>Buy Now</button>
+                            <button onClick={() => (window.location.href = "/Cart")}>Buy Now</button>
                         </div>
                     </Col>
                     {/* landing contents end  */}

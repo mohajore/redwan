@@ -8,10 +8,10 @@ import ContactUs from "./components/pages/countactUs/ContactUs";
 import Login from "./components/pages/login/Login";
 import Favorites from "./components/pages/favorites/Favorites";
 import Cart from "./components/pages/cart/Cart";
-import ProductDetails from "./assets/style/components/pages/productDetails/ProductDetails";
 import AboutPage from "./components/pages/aboutPage/AboutPage";
 import SignUp from "./components/pages/signup/Signup";
 import Profile from "./components/pages/profile/Profile";
+import ProductDetails from "./components/pages/productDetails/ProductDetails";
 function App() {
   return (
     <div className="App">

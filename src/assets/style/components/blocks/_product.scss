@@ -14,6 +14,10 @@
     .product__header__book-img {
         width: 80%;
         margin-bottom: -100px;
+        cursor: pointer;
+    }
+    i {
+        color: #ff485a;
     }
     span {
         position: absolute;
@@ -28,8 +32,8 @@
         box-shadow: 0 0 3px 0 silver;
 
         &:hover {
-            background-color: #ff485a;
-            transition: ease-in-out 0.3s;
+            // background-color: #ff485a;
+            // transition: ease-in-out 0.3s;
 
             img {
                 filter: brightness(5);
@@ -48,6 +52,7 @@
         color: $primary-color;
         font-size: 1rem;
         margin-bottom: 15px;
+        cursor: pointer;
     }
     p {
         color: $secondary-color;

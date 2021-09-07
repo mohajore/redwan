@@ -49,27 +49,27 @@ class Header extends Component {
               </a>
             </div>
             <div className="user-auth-Buttons">
-              {/* <div className="auth-Buttons">
-                                <a href="/">LOGIN</a> / <a href="/">SIGNUP</a>
-                            </div> */}
-
-              <div className="user-dropdown flex">
-                <img src="/images/Ellipse 7.png" alt="l" />
-
-                <DropdownButton
-                  id="dropdown-basic-button"
-                  title={
-                    <div>
-                      <span>Welcome</span>
-                      <p>Omer Ali</p>
-                    </div>
-                  }
-                >
-                  <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-                  <Dropdown.Item>My Books</Dropdown.Item>
-                  <Dropdown.Item>Logout</Dropdown.Item>
-                </DropdownButton>
+              <div className="auth-Buttons">
+                <a href="/login">LOGIN</a> / <a href="/signUp">SIGNUP</a>
               </div>
+              {/* <div className="user-dropdown flex">
+                                <img src="/images/Ellipse 7.png" alt="l" />
+
+                                <DropdownButton
+                                    id="dropdown-basic-button"
+                                    title={
+                                        <div>
+                                            <span>Welcome</span>
+                                            <p>Omer Ali</p>
+                                        </div>
+                                    }
+                                >
+                                    <Dropdown.Item>Profile</Dropdown.Item>
+                                    <Dropdown.Item href="/MyOrders">My Orders</Dropdown.Item>
+                                    <Dropdown.Item href="/MyLocations">My Locations</Dropdown.Item>
+                                    <Dropdown.Item>Logout</Dropdown.Item>
+                                </DropdownButton>
+                            </div> */}
             </div>
             {/* push menu start  */}
             <div className="mobile-push-menu">

@@ -4,8 +4,11 @@ import TextInput from "../../blocks/TextInput";
 import AgentOf from "../home/AgentOf";
 
 class ContactUs extends Component {
-    state = { name: "", email: "", message: "" };
+    state = { fields: { name: "", email: "", message: "" } };
     render() {
+        const { fields } = this.state;
+        const onFieldChange = (name, value) => this.setState({ fields: { ...fields, [name]: value } });
+
         return (
             <div className="contact-us">
                 <div className="page-label" />
@@ -15,9 +18,9 @@ class ContactUs extends Component {
                     <div className="form-box">
                         <Row>
                             <Col md={6}>
-                                <TextInput name="name" label="" placeholder="Name" value="" onFieldChange={this.onFieldChange} />
-                                <TextInput name="email" label="" placeholder="Email" value="" onFieldChange={this.onFieldChange} />
-                                <TextInput name="message" label="" placeholder="Message" value="" isTextArea={true} onFieldChange={this.onFieldChange} />
+                                <TextInput name="name" label="" placeholder="Name" value={fields.name} onFieldChange={onFieldChange} />
+                                <TextInput name="email" label="" placeholder="Email" value={fields.email} onFieldChange={onFieldChange} />
+                                <TextInput name="message" label="" placeholder="Message" value={fields.message} isTextArea={true} onFieldChange={onFieldChange} />
                                 <button className="submit-button">Send</button>
                             </Col>
 
@@ -74,7 +77,6 @@ class ContactUs extends Component {
             </div>
         );
     }
-    onFieldChange = ({ target: { name, value } }) => this.setState({ [name]: value });
 }
 
 export default ContactUs;

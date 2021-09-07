@@ -3,7 +3,18 @@ import { Col, Container, Row, Form, FormControl, InputGroup, SplitButton, Dropdo
 import TextInput from "../../blocks/TextInput";
 import AgentOf from "../home/AgentOf";
 class SignUp extends Component {
+    state = {
+        fields: {
+            email: "",
+            name: "",
+            ConfirmPassword: "",
+            password: "",
+        },
+    };
     render() {
+        const onFieldChange = (name, value) => this.setState({ fields: { ...fields, [name]: value } });
+        const { fields } = this.state;
+
         return (
             <div className="contact-us auth">
                 <div className="page-label" />
@@ -17,8 +28,8 @@ class SignUp extends Component {
                             <Row>
                                 {/* sign up form start  */}
                                 <Col>
-                                    <TextInput name="name" label="" placeholder="FULL NAME" value="" />
-                                    <TextInput name="email" label="" placeholder="Email" value="" />
+                                    <TextInput name="name" label="" placeholder="FULL NAME" value={fields.name} onFieldChange={onFieldChange} />
+                                    <TextInput name="email" label="" placeholder="Email" value={fields.email} onFieldChange={onFieldChange} />
                                     <Row>
                                         <Col lg={4} md={12}>
                                             <Form.Select className="me-sm-2" id="inlineFormCustomSelect">
@@ -40,11 +51,12 @@ class SignUp extends Component {
                                             </InputGroup>
                                         </Col>
                                     </Row>
-                                    <TextInput name="password" label="" placeholder="PASSWORD" value="" />
-                                    <TextInput name="password" label="" placeholder="CONFIRM PASSWORD" value="" />
+                                    <TextInput name="password" label="" placeholder="PASSWORD" value={fields.password} onFieldChange={onFieldChange} />
+                                    <TextInput name="ConfirmPassword" label="" placeholder="CONFIRM PASSWORD" value={fields.ConfirmPassword} onFieldChange={onFieldChange} />
+
                                     <button className="submit-button">SIGNUP</button>
                                     <p>
-                                        I have an account <a href="/">login</a>
+                                        I have an account <a href="/login">login</a>
                                     </p>
                                 </Col>
                                 {/* sign up form end  */}

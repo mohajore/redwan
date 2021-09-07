@@ -93,9 +93,9 @@ class Cart extends Component {
                                     <>
                                         <h4>Check Your Books</h4>
 
-                                        <HorizontalProduct />
-                                        <HorizontalProduct />
-                                        <HorizontalProduct />
+                                        <HorizontalProduct withDelete />
+                                        <HorizontalProduct withDelete />
+                                        <HorizontalProduct withDelete />
                                     </>
                                 ) : step === 2 ? (
                                     <>

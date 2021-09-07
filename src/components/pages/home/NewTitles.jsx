@@ -11,10 +11,10 @@ function NewTitle({ title }) {
                     <h3>{title}</h3>
                 </div>
                 <Row>
-                    {products.map(() => {
+                    {products.map((item) => {
                         return (
                             <Col sm={6} md={4} xl={3}>
-                                <Product />
+                                <Product id={item} />
                             </Col>
                         );
                     })}
