@@ -11,6 +11,7 @@ import Cart from "./components/pages/cart/Cart";
 import AboutPage from "./components/pages/aboutPage/AboutPage";
 import SignUp from "./components/pages/signup/Signup";
 import ProductDetails from "./components/pages/productDetails/ProductDetails";
+import MyLocations from "./components/pages/Location/MyLocation";
 function App() {
     return (
         <div className="App">
@@ -24,6 +25,7 @@ function App() {
                     <Route component={Cart} path="/Cart" />
                     <Route component={ProductDetails} path="/ProductDetails" />
                     <Route component={SignUp} path="/signup" exact />
+                    <Route component={MyLocations} path="/MyLocations" exact />
                     <Route component={Login} path="/Login" />
                 </Switch>
                 <Footer />

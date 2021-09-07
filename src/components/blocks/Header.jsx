@@ -63,7 +63,8 @@ class Header extends Component {
                                     }
                                 >
                                     <Dropdown.Item>Profile</Dropdown.Item>
-                                    <Dropdown.Item>My Books</Dropdown.Item>
+                                    <Dropdown.Item>My Orders</Dropdown.Item>
+                                    <Dropdown.Item href="/MyLocations">My Locations</Dropdown.Item>
                                     <Dropdown.Item>Logout</Dropdown.Item>
                                 </DropdownButton>
                             </div>

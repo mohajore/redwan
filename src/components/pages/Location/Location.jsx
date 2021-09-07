@@ -3,27 +3,13 @@ import { Button, Col, Form, Row, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import TextInput from "../../blocks/TextInput";
 
-function Location({ id, selectedLocation, changeLocation }) {
+function Location({ id, selectedLocation, changeLocation, widthCheck }) {
     const [addAddress, setAddAddress] = useState(false);
     const [fields, setFields] = useState({
         Address: "",
         Name: "",
     });
 
-    const [Position, setPosition] = useState({
-        lat: 31.963158,
-        lng: 35.930359,
-    });
-
-    const [defaultPosition, setDefaultPosition] = useState({
-        lat: 31.963158,
-        lng: 35.930359,
-    });
-
-    const handleLocationChange = ({ position, places }) => {
-        // Set new location
-        // setPosition(position);
-    };
     const closeModal = () => {
         setAddAddress(false);
     };
@@ -34,7 +20,9 @@ function Location({ id, selectedLocation, changeLocation }) {
             className="location"
             onClick={() => {
                 // setSelectedLocation(id);
-                changeLocation(id);
+                if (changeLocation) {
+                    changeLocation(id);
+                }
             }}
         >
             <div className="location__header flex">
@@ -71,11 +59,13 @@ function Location({ id, selectedLocation, changeLocation }) {
             <p>AMMAN - JORDAN - QUEEN RANIA STREET BUL 15</p>
             <div className="location-footer flex">
                 <span>+9620000000</span>
-                <div className="flex">
-                    <span style={selectedLocation === id ? { backgroundColor: "#50a433 " } : null}>
-                        <i className="fa fa-check"></i>
-                    </span>
-                </div>
+                {widthCheck && (
+                    <div className="flex">
+                        <span style={selectedLocation === id ? { backgroundColor: "#50a433 " } : null}>
+                            <i className="fa fa-check"></i>
+                        </span>
+                    </div>
+                )}
             </div>
 
             {/* add/edit address modal */}
@@ -90,12 +80,11 @@ function Location({ id, selectedLocation, changeLocation }) {
                             <TextInput name="Name" label="Name" placeholder="Name" value={fields.Name} onFieldChange={onFieldChange} />
                         </Col>
                         <Col lg={6} md={12} sm={12} style={{ marginBottom: "1rem" }}>
-                            <TextInput name="Address" label="Address" placeholder="Address" value={fields.Address} onFieldChange={onFieldChange} />
+                            <TextInput name="Phone" label="Phone" placeholder="Phone" value={fields.Phone} onFieldChange={onFieldChange} />
                         </Col>
-
-                        <Col lg={6} md={12} sm={12}></Col>
-                        <Col lg={6} md={12} sm={12}></Col>
-
+                        <Col lg={12} md={12} sm={12} style={{ marginBottom: "1rem" }}>
+                            <TextInput name="Address" label="Address" placeholder="Address" value={fields.Address} onFieldChange={onFieldChange} isTextArea />
+                        </Col>
                         <Col lg={12} md={12} sm={12} className="locationButton">
                             <button
                                 className="submit-button"
