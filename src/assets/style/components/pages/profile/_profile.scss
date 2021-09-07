@@ -1,0 +1,145 @@
+@import "../../../abstract/mixins";
+.profile {
+  .input-group {
+    .profile-select {
+      width: 14%;
+    }
+    .phone-number-input {
+      width: 84%;
+    }
+  }
+  .yourpass-input {
+    border: none;
+  }
+  .reset-button {
+    color: $primary-color;
+    padding: 0 30px;
+    background-color: transparent;
+  }
+  .vertical-line {
+    display: block;
+    height: 30px;
+    width: 3px;
+    background-color: #bcbcbc;
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+  .profile__img {
+    position: absolute;
+    border: solid 10px $primary-color;
+    width: 180px;
+    border-radius: 70px;
+    padding: 30px 40px;
+    top: -64px;
+    right: 100px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+    label {
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 35px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      text-align: center;
+      color: white;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
+.file {
+  display: none;
+}
+@include respond(laptop) {
+  .profile {
+    .input-group {
+      .profile-select {
+        width: 20%;
+      }
+      .phone-number-input {
+        width: 78%;
+      }
+    }
+  }
+}
+@include respond(small-laptop) {
+  .profile {
+    .reset-button {
+      padding: 0 10px;
+    }
+    .input-group {
+      .profile-select {
+        width: 25%;
+      }
+      .phone-number-input {
+        width: 70%;
+      }
+    }
+  }
+}
+@include respond(tablet) {
+  .profile {
+    .input-group {
+      .profile-select {
+        width: 15%;
+      }
+      .phone-number-input {
+        width: 81%;
+      }
+    }
+
+    .row {
+      flex-direction: column-reverse;
+    }
+    .profile__img {
+      // background-color: aqua;
+      position: relative;
+      top: auto;
+      right: auto;
+      margin: 0 auto 30px;
+    }
+  }
+}
+@include respond(large-phone) {
+  .profile {
+    .input-group {
+      .profile-select {
+        width: 19%;
+      }
+      .phone-number-input {
+        width: 77%;
+      }
+    }
+    .profile__img {
+      width: 150px;
+      border-radius: 55px;
+    }
+  }
+  .profile .input-group .profile-select {
+    font-size: 14px;
+  }
+  .auth .input-group input,
+  .profile .input-group .phone-number-input {
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+}
+@include respond(phone) {
+  .profile {
+    .input-group {
+      .profile-select {
+        width: 25%;
+      }
+      .phone-number-input {
+        width: 70%;
+      }
+    }
+  }
+}

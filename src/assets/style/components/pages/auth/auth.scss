@@ -1,109 +1,119 @@
 .forget-password {
-    color: $primary-color;
-    font-size: 12px;
-    float: right;
-    margin-top: -10px;
-    transition: ease-in-out 0.3s;
-    cursor: pointer;
+  color: $primary-color;
+  font-size: 12px;
+  float: right;
+  margin-top: -10px;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
 
-    &:hover {
-        color: $third-text-color;
-        transition: ease-in-out 0.3s;
-    }
+  &:hover {
+    color: $third-text-color;
+    transition: ease-in-out 0.3s;
+  }
 }
 .auth {
-    .submit-button {
-        margin-top: 50px;
+  .submit-button {
+    margin-top: 50px;
+  }
+  p {
+    color: $secondary-color;
+    font-size: 14px;
+    a {
+      color: $primary-color;
+      font-weight: bold;
+      &:hover {
+        color: $third-text-color;
+        transition: ease-in-out 0.3s;
+      }
     }
-    p {
-        color: $secondary-color;
-        font-size: 14px;
-        a {
-            color: $primary-color;
-            font-weight: bold;
-            &:hover {
-                color: $third-text-color;
-                transition: ease-in-out 0.3s;
-            }
-        }
+  }
+  .form-box .main-form-img {
+    width: 425px;
+  }
+  // SignUp page Style
+  .form-select {
+    background-color: #f1f1f1 !important;
+    border-radius: 10px;
+    padding: 8px 15px;
+    margin-bottom: 15px !important;
+    font-size: 18px;
+    color: #bcbcbc;
+    color: $primary-color;
+
+    option {
+      //   background-color: $primary-color;
+      transition: all 0.9 ease-in-out;
+      padding: 20px;
+      &:hover {
+        background-color: #4ba716 !important;
+      }
     }
-    .form-box .main-form-img {
-        width: 425px;
-    }
-    // SignUp page Style
+  }
+  .input-group {
+    background-color: #f1f1f1;
+    border: 1px solid #bcbcbc;
+    height: 45px;
+    border-radius: 10px;
     .form-select {
-        background-color: #f1f1f1 !important;
-        border-radius: 10px;
-        padding: 8px 15px;
-        margin-bottom: 15px !important;
-        font-size: 18px;
+      border: none;
+      color: #bcbcbc;
+      width: 20%;
+    }
+    input {
+      width: 77%;
+      height: 100%;
+      background-color: transparent;
+      color: $secondary-color;
+
+      &::placeholder {
         color: #bcbcbc;
-        color: $primary-color;
+        font-size: 18px;
+      }
     }
-    .input-group {
-        background-color: #f1f1f1;
-        border: 1px solid #bcbcbc;
-        height: 45px;
-        border-radius: 10px;
-        .form-select {
-            border: none;
-            color: #bcbcbc;
-            width: 20%;
-        }
-        input {
-            width: 77%;
-            height: 100%;
-            background-color: transparent;
-            color: $secondary-color;
-            &::placeholder {
-                color: #bcbcbc;
-                font-size: 18px;
-            }
-        }
-    }
-    // SignUp page Style End
+  }
+  // SignUp page Style End
 }
 @include respond(laptop) {
-    .auth {
-        .input-group {
-            .form-select {
-                width: 30%;
-            }
-            input {
-                width: 67%;
-            }
-        }
+  .auth {
+    .input-group {
+      .form-select {
+        width: 30%;
+      }
+      input {
+        width: 67%;
+      }
     }
+  }
 }
 @include respond(small-laptop) {
-    .auth {
-        .input-group {
-            .form-select {
-                width: 25%;
-            }
-            input {
-                width: 72%;
-            }
-        }
+  .auth {
+    .input-group {
+      .form-select {
+        width: 25%;
+      }
+      input {
+        width: 72%;
+      }
     }
+  }
 }
 @include respond(tablet) {
-    .form-box {
-        padding: 25px;
-    }
-    .auth .form-box .main-form-img {
-        display: none;
-    }
+  .form-box {
+    padding: 25px;
+  }
+  .auth .form-box .main-form-img {
+    display: none;
+  }
 }
 @include respond(phone) {
-    .auth {
-        .input-group {
-            .form-select {
-                width: 30%;
-            }
-            input {
-                width: 70%;
-            }
-        }
+  .auth {
+    .input-group {
+      .form-select {
+        width: 30%;
+      }
+      input {
+        width: 70%;
+      }
     }
+  }
 }

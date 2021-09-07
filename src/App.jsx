@@ -11,25 +11,27 @@ import Cart from "./components/pages/cart/Cart";
 import ProductDetails from "./assets/style/components/pages/productDetails/ProductDetails";
 import AboutPage from "./components/pages/aboutPage/AboutPage";
 import SignUp from "./components/pages/signup/Signup";
+import Profile from "./components/pages/profile/Profile";
 function App() {
-    return (
-        <div className="App">
-            <BrowserRouter basename="/">
-                <Header />
-                <Switch>
-                    <Route component={Home} path="/" exact />
-                    <Route component={ContactUs} path="/ContactUs" />
-                    <Route component={AboutPage} path="/AboutPage" />
-                    <Route component={Favorites} path="/Favorites" />
-                    <Route component={Cart} path="/Cart" />
-                    <Route component={ProductDetails} path="/ProductDetails" />
-                    <Route component={SignUp} path="/signup" exact />
-                    <Route component={Login} path="/Login" />
-                </Switch>
-                <Footer />
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div className="App">
+      <BrowserRouter basename="/">
+        <Header />
+        <Switch>
+          <Route component={Home} path="/" exact />
+          <Route component={ContactUs} path="/ContactUs" />
+          <Route component={AboutPage} path="/AboutPage" />
+          <Route component={Favorites} path="/Favorites" />
+          <Route component={Cart} path="/Cart" />
+          <Route component={ProductDetails} path="/ProductDetails" />
+          <Route component={SignUp} path="/signup" exact />
+          <Route component={Login} path="/Login" />
+          <Route component={Profile} path="/Profile" />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
