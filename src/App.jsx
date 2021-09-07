@@ -9,6 +9,7 @@ import AboutPage from "./components/pages/aboutUS/AboutPage";
 import Login from "./components/pages/login/Login";
 import Favorites from "./components/pages/favorites/Favorites";
 import Cart from "./components/pages/cart/Cart";
+import ProductDetails from "./assets/style/components/pages/productDetails/ProductDetails";
 function App() {
     return (
         <div className="App">
@@ -20,6 +21,7 @@ function App() {
                     <Route component={AboutPage} path="/AboutPage" />
                     <Route component={Favorites} path="/Favorites" />
                     <Route component={Cart} path="/Cart" />
+                    <Route component={ProductDetails} path="/ProductDetails" />
                     <Route component={Login} path="/Login" />
                 </Switch>
                 <Footer />
