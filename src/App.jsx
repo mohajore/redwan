@@ -10,6 +10,7 @@ import Favorites from "./components/pages/favorites/Favorites";
 import Cart from "./components/pages/cart/Cart";
 import ProductDetails from "./assets/style/components/pages/productDetails/ProductDetails";
 import AboutPage from "./components/pages/aboutPage/AboutPage";
+import SignUp from "./components/pages/signup/Signup";
 function App() {
     return (
         <div className="App">
@@ -22,6 +23,7 @@ function App() {
                     <Route component={Favorites} path="/Favorites" />
                     <Route component={Cart} path="/Cart" />
                     <Route component={ProductDetails} path="/ProductDetails" />
+                    <Route component={SignUp} path="/signup" exact />
                     <Route component={Login} path="/Login" />
                 </Switch>
                 <Footer />
