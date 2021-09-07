@@ -5,11 +5,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/pages/home/Home";
 import Footer from "./components/blocks/Footer";
 import ContactUs from "./components/pages/countactUs/ContactUs";
-import AboutPage from "./components/pages/aboutUS/AboutPage";
 import Login from "./components/pages/login/Login";
 import Favorites from "./components/pages/favorites/Favorites";
 import Cart from "./components/pages/cart/Cart";
 import ProductDetails from "./assets/style/components/pages/productDetails/ProductDetails";
+import AboutPage from "./components/pages/aboutPage/AboutPage";
 function App() {
     return (
         <div className="App">
