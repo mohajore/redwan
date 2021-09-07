@@ -36,7 +36,7 @@ class Header extends Component {
                             </li>
                         </ul>
                         <div className="cart-fav flex">
-                            <a href="/" className="single-cart">
+                            <a href="/Cart" className="single-cart">
                                 <img src="/images/fi-rr-shopping-cart.svg" alt="k" />
                                 <span>81</span>
                             </a>

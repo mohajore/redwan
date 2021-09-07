@@ -2,7 +2,7 @@ import React from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { withRouter } from "react-router";
 
-const Label = ({ label, tooltip = label, classAttr = "", isRequired, policyId, history, onAddNew }) => (
+const Label = ({ label, tooltip, classAttr = "", isRequired, policyId, history, onAddNew }) => (
     <div className={`reusable-label ${classAttr}`}>
         <div>
             <span>{label}</span>

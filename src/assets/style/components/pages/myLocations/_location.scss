@@ -1,0 +1,78 @@
+.location {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+    &:hover {
+        border-color: $primary-color;
+        transition: ease-in-out 0.3s;
+    }
+    p {
+        color: $secondary-color;
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+}
+.location__header {
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: flex-start;
+
+    h6 {
+        color: $primary-color;
+        font-weight: bold;
+        max-width: 90%;
+    }
+    button {
+        background-color: #fff;
+        color: $primary-color;
+    }
+}
+.location-footer {
+    justify-content: space-between;
+    span {
+        color: $secondary-color;
+        font-size: 14px;
+    }
+    div {
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        border: 2px solid $primary-color;
+        justify-content: center;
+        padding: 2px;
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // background-color: $primary-color;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            color: #fff;
+        }
+    }
+}
+.location-modal {
+    .modal-title {
+        margin-bottom: 20px;
+        justify-content: space-between;
+    }
+    .modal-content {
+        padding: 20px;
+    }
+    h5 {
+        color: $primary-color;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .submit-button {
+        margin-top: 30px;
+        border-radius: 5px;
+    }
+    .form-control {
+        font-weight: 100 !important;
+    }
+}

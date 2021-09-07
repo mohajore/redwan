@@ -10,25 +10,23 @@ class Login extends Component {
                 <div className="page-label" />
                 <Container>
                     <h3 className="page-title">LOGIN</h3>
-                    <div className="contact-us__contents">
-                        <div className="form-box">
-                            <Row>
-                                <Col md={6}>
-                                    <TextInput name="email" label="" placeholder="Email" value="" />
-                                    <TextInput name="password" label="" placeholder="Password" value="" />
-                                    <span className="forget-password">Forget my password</span>
-                                    <button className="submit-button">Login</button>
-                                    <p>
-                                        I don't have an account <a href="/">signup</a>
-                                    </p>
-                                </Col>
+                    <div className="form-box">
+                        <Row>
+                            <Col md={6}>
+                                <TextInput name="email" label="" placeholder="Email" value="" />
+                                <TextInput name="password" label="" placeholder="Password" value="" />
+                                <span className="forget-password">Forget my password</span>
+                                <button className="submit-button">Login</button>
+                                <p>
+                                    I don't have an account <a href="/">signup</a>
+                                </p>
+                            </Col>
 
-                                <Col md={6}>
-                                    {/* <img scc="/images/" alt="l" /> */}
-                                    <img src="/images/Group 50411.png" alt="l" />
-                                </Col>
-                            </Row>
-                        </div>
+                            <Col md={6}>
+                                {/* <img scc="/images/" alt="l" /> */}
+                                <img src="/images/Group 50411.png" alt="l" className="main-form-img" />
+                            </Col>
+                        </Row>
                     </div>
                 </Container>
                 <AgentOf />

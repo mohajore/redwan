@@ -27,15 +27,15 @@
             }
         }
     }
-    .contact-us__contents img {
+    .form-box .main-form-img {
         width: 425px;
     }
 }
 @include respond(tablet) {
-    .contact-us__contents {
+    .form-box {
         padding: 25px;
     }
-    .contact-us__contents img {
+    .auth .form-box .main-form-img {
         display: none;
     }
 }

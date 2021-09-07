@@ -5,12 +5,16 @@
     justify-content: space-between;
 
     .requiredField {
-        color: $primary-color;
+        color: $third-text-color;
     }
 
     span {
         font-weight: bold;
         letter-spacing: 1px;
+        margin-bottom: 5px;
+        display: block;
+        color: $secondary-color;
+
         // color: $cusLightBlack;
     }
 
