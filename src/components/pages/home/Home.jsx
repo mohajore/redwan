@@ -8,19 +8,19 @@ import AgentOf from "./AgentOf";
 import TheBlog from "./TheBlog";
 
 class Home extends Component {
-    render() {
-        return (
-            <div className="home">
-                <LandingPage />
-                <AboutBlock />
-                <BigSale />
-                <NewTitles title="New Title" />
-                <BigTitle />
-                <AgentOf />
-                <TheBlog />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="home">
+        <LandingPage />
+        <AboutBlock />
+        <BigSale />
+        <NewTitles title="New Title" />
+        <BigTitle />
+        <AgentOf />
+        <TheBlog />
+      </div>
+    );
+  }
 }
 
 export default Home;
