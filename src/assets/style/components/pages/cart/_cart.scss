@@ -23,6 +23,7 @@
     margin-bottom: 20px;
     img {
         width: 25%;
+        max-height: 170px;
     }
     p {
         color: $secondary-color;
@@ -108,6 +109,26 @@
         }
         .total {
             margin-top: 40px;
+            padding-bottom: 10px;
+        }
+    }
+    .invoice-location-insert {
+        border-top: 1px solid $primary-color;
+        padding-top: 15px;
+        .location__header {
+            margin-bottom: 5px;
+
+            h6 {
+                margin-top: 5px;
+            }
+        }
+        p {
+            color: $secondary-color;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .location-footer {
+            padding-bottom: 15px;
         }
     }
     .submit-button {

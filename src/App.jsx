@@ -12,6 +12,8 @@ import AboutPage from "./components/pages/aboutPage/AboutPage";
 import SignUp from "./components/pages/signup/Signup";
 import ProductDetails from "./components/pages/productDetails/ProductDetails";
 import MyLocations from "./components/pages/Location/MyLocation";
+import MyOrders from "./components/pages/countactUs/MyOrders/MyOrders";
+import OrderDetails from "./components/pages/countactUs/MyOrders/OrderDetails";
 function App() {
     return (
         <div className="App">
@@ -26,6 +28,8 @@ function App() {
                     <Route component={ProductDetails} path="/ProductDetails" />
                     <Route component={SignUp} path="/signup" exact />
                     <Route component={MyLocations} path="/MyLocations" exact />
+                    <Route component={MyOrders} path="/MyOrders" exact />
+                    <Route component={OrderDetails} path="/OrderDetails" exact />
                     <Route component={Login} path="/Login" />
                 </Switch>
                 <Footer />
