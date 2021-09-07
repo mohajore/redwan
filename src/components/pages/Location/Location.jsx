@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row, Modal } from "react-bootstrap";
-import LocationPicker from "react-location-picker";
 import { Link } from "react-router-dom";
 import TextInput from "../../blocks/TextInput";
 
@@ -96,9 +95,7 @@ function Location({ id, selectedLocation, changeLocation }) {
 
                         <Col lg={6} md={12} sm={12}></Col>
                         <Col lg={6} md={12} sm={12}></Col>
-                        <Col lg={12} md={12} sm={12}>
-                            <LocationPicker circl containerElement={<div style={{ height: "100%" }} />} className="MapPicker" mapElement={<div style={{ height: "350px" }} />} onChange={handleLocationChange} defaultPosition={defaultPosition} circleOptions={{ visible: false }} />
-                        </Col>
+
                         <Col lg={12} md={12} sm={12} className="locationButton">
                             <button
                                 className="submit-button"
