@@ -15,6 +15,18 @@ class AuthService {
         }
     }
 
+    async SignUp(userData) {
+        try {
+            const data = await apiService
+                .unauthenticated()
+                .post(apiEndPoints.SignUp, userData)
+                .then(({ data }) => data);
+            return handleResponse({ success: true, ...data });
+        } catch ({ response }) {
+            return handleResponse({ success: false, ...response?.data });
+        }
+    }
+
     logout() {
         window.localStorage.clear();
         window.location.href = "/login";

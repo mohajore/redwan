@@ -9,11 +9,11 @@ class ApiService {
     }
 
     authenticated() {
-        return axios.create({ baseURL: this.baseURL, headers: { Token: this.token, Authorization: `Bearer ${this.accessToken}` } });
+        return axios.create({ baseURL: this.baseURL, headers: { Token: this.token, Authorization: `Bearer ${this.accessToken}`, Language: "en" } });
     }
 
     unauthenticated() {
-        return axios.create({ baseURL: this.baseURL, headers: { Token: this.token } });
+        return axios.create({ baseURL: this.baseURL, headers: { Token: this.token, Language: "en" } });
     }
 
     storeToken(token) {

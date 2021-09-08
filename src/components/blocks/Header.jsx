@@ -41,11 +41,11 @@ class Header extends Component {
                             </li>
                         </ul>
                         <div className="cart-fav flex">
-                            <a href="/Cart" className="single-cart">
+                            <a href={this.accessToken ? "/Cart" : "/login"} className="single-cart">
                                 <img src="/images/fi-rr-shopping-cart.svg" alt="k" />
                                 <span>{this.props.currentUser.cart_count}</span>
                             </a>
-                            <a href="/Favorites" className="single-cart">
+                            <a href={this.accessToken ? "/Favorites" : "/login"} className="single-cart">
                                 <img src="/images/fi-rr-heart.svg" alt="k" />
                                 <span>{this.props.currentUser.fav_count}</span>
                             </a>
