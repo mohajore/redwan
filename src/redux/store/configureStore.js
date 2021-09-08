@@ -8,6 +8,6 @@ const persistedReducer = persistReducer({ key: "Radwan_new", storage }, rootRedu
 
 const store = configureStore({ reducer: persistedReducer, middleware: [...getDefaultMiddleware({ serializableCheck: false }), api] });
 
-const persistor = persistStore(store);
+const persister = persistStore(store);
 
-export { store, persistor };
+export { store, persister };

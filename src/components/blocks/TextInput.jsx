@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FormControl, InputGroup } from "react-bootstrap";
+import { ErrorMessage } from "./ErrorMessage";
 import Label from "./Label";
-// import { ErrorMessage } from "../reusable/ErrorMessage";
 
 class TextInput extends Component {
     render() {
@@ -9,11 +9,10 @@ class TextInput extends Component {
 
         return (
             <div className="text-input-block">
-                <Label label={label} tooltip={tooltip} isRequired={isRequired} />
+                {label && <Label label={label} tooltip={tooltip} isRequired={isRequired} />}
 
                 <InputGroup className="mb-3">{isTextArea ? <textarea name={name} value={value} placeholder={placeholder ?? label} maxLength={maxLength} onChange={this.onChange} aria-label="Username" aria-describedby="basic-addon1" /> : <FormControl name={name} value={value} placeholder={placeholder ?? label} maxLength={maxLength} onChange={this.onChange} aria-label="Username" aria-describedby="basic-addon1" />}</InputGroup>
-
-                {/* {validate && <ErrorMessage message={validate} />} */}
+                {validate && <ErrorMessage message={validate} />}
             </div>
         );
     }

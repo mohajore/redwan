@@ -1,1 +1,3 @@
-export const apiEndPoints = {};
+export const apiEndPoints = {
+    login: "auth/sign_in",
+};

@@ -1,8 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
-    name: 'currentUser',
-    initialState: { country_id: 0, phone: '', name_en: '', name_ar: '', email: '', image: null, language: 'en', updated_at: '', created_at: '', id: null, country: null },
+    name: "currentUser",
+    initialState: {
+        country: null,
+        email: "",
+        image: null,
+        last_login: null,
+        name: "",
+        phone: "",
+    },
 
     reducers: {
         setUser: (user, { payload }) => {
