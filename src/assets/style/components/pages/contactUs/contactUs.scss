@@ -5,7 +5,7 @@
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   height: 120px;
-  width: 45%;
+  width: 49.5%;
   position: absolute;
   background: rgb(110, 177, 35);
   background: linear-gradient(
@@ -65,6 +65,7 @@
           margin: 0;
         }
         p {
+          text-transform: capitalize;
           margin-bottom: 0;
           font-weight: bold;
           color: #454545;
@@ -119,11 +120,11 @@
   .contact-details div .addresses-list li span {
     font-size: 13px;
   }
+  .page-title {
+    font-size: 40px;
+  }
 }
 @include respond(tablet) {
-  .page-label {
-    width: 45%;
-  }
   .contact-details div .addresses-list li {
     margin-bottom: 15px;
   }
@@ -132,7 +133,18 @@
     right: -20px;
     width: 250px !important;
   }
+  .page-label {
+    width: 56%;
+  }
+  .page-title {
+    font-size: 30px;
+  }
 }
+// @include respond(large-phone) {
+//   .page-title {
+//     font-size: 25px;
+//   }
+// }
 
 @include respond(phone) {
   .form-box .main-form-img {

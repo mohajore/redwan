@@ -175,7 +175,9 @@ class ProductDetails extends Component {
                   <div className="product-browser-detail__info__buttons">
                     <div className="price-quantity big-sale__card--buttons flex">
                       <div>
-                        <span>PRICE</span>
+                        <span className="price-quantity__price-span">
+                          price
+                        </span>
                         <span>350$</span>
                       </div>
 
@@ -216,11 +218,11 @@ class ProductDetails extends Component {
                     <div className="add-to-cart-wish-list big-sale__card--buttons flex">
                       <button className="add-to-fav flex">
                         <img src="/images/fi-rr-heart2.svg" alt="/" />
-                        <span>WISH LIST</span>
+                        <span>wish list</span>
                       </button>
                       <button className="add-to-cart flex">
                         <img src="/images/fi-rr-shopping-cart2.svg" alt="/" />
-                        <span>ADD TO CART</span>
+                        <span>add to cart</span>
                       </button>
                     </div>
                   </div>

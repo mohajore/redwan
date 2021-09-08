@@ -18,10 +18,10 @@ class Cart extends Component {
         <Container>
           <div className=" cart-header">
             <Row>
-              <Col md={5}>
+              <Col md={6}>
                 <h3 className="page-title">your cart</h3>
               </Col>
-              <Col md={7}>
+              <Col md={6}>
                 <div className="steps">
                   <ul>
                     {/* step 1 label  start  */}

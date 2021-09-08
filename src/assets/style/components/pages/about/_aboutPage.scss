@@ -23,6 +23,7 @@
       font-family: $main-font-bold;
     }
   }
+
   .page-title {
     padding-left: 30px;
   }
@@ -70,6 +71,12 @@
         font-size: 18px;
       }
     }
+    .page-label {
+      width: 56%;
+    }
+    .page-title {
+      font-size: 40px;
+    }
   }
 }
 @include respond(tablet) {
@@ -84,6 +91,9 @@
         width: 450px;
       }
     }
+    .page-title {
+      font-size: 30px;
+    }
   }
 }
 @include respond(large-phone) {
@@ -95,6 +105,19 @@
       .about-page__first-article {
         width: auto;
       }
+    }
+    .page-label {
+      width: 61%;
+    }
+    .page-title {
+      font-size: 25px;
+    }
+  }
+}
+@include respond(phone) {
+  .about-page {
+    .page-title {
+      font-size: 16px;
     }
   }
 }
