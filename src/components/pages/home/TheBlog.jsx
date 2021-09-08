@@ -36,7 +36,7 @@ class TheBlog extends Component {
                 <div className="the-blog__image-container">
                   <img
                     className="the-blog__left-section__image"
-                    src="images/books.png"
+                    src="images/books2.png"
                   />
                   <p className="the-blog__section__date">28.07.2021</p>
 
@@ -56,7 +56,7 @@ class TheBlog extends Component {
                 <div className="the-blog__image-container">
                   <img
                     className="the-blog__left-section__image"
-                    src="images/books.png"
+                    src="images/books2.png"
                   />
                   <p className="the-blog__section__date">28.07.2021</p>
 

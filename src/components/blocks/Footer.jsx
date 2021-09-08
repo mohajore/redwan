@@ -74,13 +74,13 @@ function Footer() {
                 <h3>quick links</h3>
                 <ul>
                   <li>
-                    <a href="/home">home</a>
+                    <a href="/">home</a>
                   </li>
                   <li>
                     <a href="/aboutpage">about</a>
                   </li>
                   <li>
-                    <a href="#">teacher's area</a>
+                    <a href="teachersarea">teacher's area</a>
                   </li>
                 </ul>
               </div>
@@ -120,5 +120,4 @@ function Footer() {
     </>
   );
 }
-
 export default Footer;

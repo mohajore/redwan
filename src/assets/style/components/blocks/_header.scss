@@ -30,6 +30,11 @@
           }
         }
       }
+      .activeHeader {
+        a {
+          color: $primary-color;
+        }
+      }
     }
     .cart-fav {
       margin: auto;
@@ -62,6 +67,7 @@
     .user-auth-Buttons {
       margin-left: auto;
       font-weight: bold;
+      text-transform: uppercase;
       color: $secondary-color;
 
       a {
