@@ -1,42 +1,44 @@
 .about-block {
-    margin-top: 100px;
-    .about-block__contents {
-        padding: 40px;
-        border-radius: 50px;
-        background: rgb(110, 177, 35);
-        background: linear-gradient(90deg, rgba(110, 177, 35, 1) 0%, rgba(48, 149, 69, 1) 100%);
-        position: relative;
-        img {
-            position: absolute;
-            right: -40px;
-            bottom: -55px;
-            width: 400px;
-        }
-        color: #fff;
-        h2 {
-        }
-        p {
-            // width: 60%;
-        }
+  margin-top: 100px;
+  .about-block__contents {
+    padding: 40px;
+    border-radius: 50px;
+    background: rgb(110, 177, 35);
+    background: linear-gradient(
+      90deg,
+      rgba(110, 177, 35, 1) 0%,
+      rgba(48, 149, 69, 1) 100%
+    );
+    position: relative;
+    img {
+      position: absolute;
+      right: -40px;
+      bottom: -55px;
+      width: 400px;
     }
+    color: #fff;
+    h3 {
+      text-transform: capitalize;
+    }
+  }
 }
 
 @include respond(laptop) {
-    .about-block .about-block__contents img {
-        right: -28px;
-        bottom: -20px;
-        width: 332px;
-    }
-    .about-block .about-block__contents {
-        padding: 30px;
-    }
+  .about-block .about-block__contents img {
+    right: -28px;
+    bottom: -20px;
+    width: 332px;
+  }
+  .about-block .about-block__contents {
+    padding: 30px;
+  }
 }
 @include respond(small-laptop) {
-    .about-block .about-block__contents img {
-        display: none;
-    }
-    .about-block {
-        margin-top: 60px;
-        border-radius: 30px;
-    }
+  .about-block .about-block__contents img {
+    display: none;
+  }
+  .about-block {
+    margin-top: 60px;
+    border-radius: 30px;
+  }
 }

@@ -23,6 +23,9 @@
       font-family: $main-font-bold;
     }
   }
+  .page-title {
+    padding-left: 30px;
+  }
 }
 @include respond(smallDesktop) {
   .about-page {

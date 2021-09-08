@@ -15,7 +15,7 @@
     border-radius: 25px;
     padding: 30px 20px;
     background-color: #fff;
-    height: 520px;
+    height: 480px;
     .the-blog__image-container {
       .the-blog__left-section__image {
         width: 100%;
@@ -26,6 +26,9 @@
       color: $primary-color;
       font-size: 18px;
       font-family: $main-font-bold;
+    }
+    .The-blog__section__title-big-one {
+      margin-top: -50px;
     }
     .the-blog__section__date {
       color: $forth-text-color;
@@ -44,7 +47,7 @@
 @include respond(smallDesktop) {
   .The-blog {
     .the-blog__section {
-      height: 480px;
+      height: 440px;
     }
     .the-blog__background-image {
       bottom: -183px;
@@ -56,7 +59,7 @@
 @include respond(laptop) {
   .The-blog {
     .the-blog__section {
-      height: 440px;
+      height: 400px;
     }
     .the-blog__background-image {
       bottom: -313px;
@@ -69,7 +72,7 @@
   .The-blog {
     padding: 60px 0px;
     .the-blog__section {
-      height: 400px;
+      height: 360px;
     }
     .the-blog__background-image {
       bottom: -316px;

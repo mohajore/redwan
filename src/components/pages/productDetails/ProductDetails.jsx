@@ -7,8 +7,7 @@ import { slide as Menu } from "react-burger-menu";
 
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-// import InnerImageZoom from "react-inner-image-zoom";
-// import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+
 //
 
 class ProductDetails extends Component {
@@ -39,25 +38,14 @@ class ProductDetails extends Component {
 
   // render main img gallery carousel
   _renderCustomControls(item) {
-    return (
-      // <InnerImageZoom
-      //     zoomScale={2}
-      //     // src={Global.image_link + item.original}
-      //     src={item.original}
-      //     zoomSrc={item.original}
-      // />
-      <img src={item.original} alt="l" />
-    );
+    return <img src={item.original} alt="l" />;
   }
   // end render main img gallery carousel
 
   // render Thumb img gallery carousel
 
   _renderCustomThumbs(item) {
-    // if (this.state.IsOptionSelected && this.state.OptionsImages.length < 1) {
-    // } else {
     return <img src={item.thumbnail} alt="l" style={{ width: "100%" }} />;
-    // }
   }
   // end render Thumb img gallery carousel
   //

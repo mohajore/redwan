@@ -20,7 +20,7 @@ class TheBlog extends Component {
                   />
                   <p className="the-blog__section__date"></p>
 
-                  <h4 className="The-blog__section__title">
+                  <h4 className="The-blog__section__title The-blog__section__title-big-one">
                     Blog Heading Line
                   </h4>
                   <p className="The-blog__section__description">
