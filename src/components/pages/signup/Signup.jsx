@@ -37,6 +37,7 @@ class SignUp extends Component {
       password: "",
       country: "",
     },
+    openEyes: false,
   };
   async componentDidMount() {
     const { countries } = await generalServices.getAllCountries();
@@ -61,7 +62,7 @@ class SignUp extends Component {
           country: "",
         },
       });
-    const { fields, countries, errors } = this.state;
+    const { fields, countries, errors, openEyes } = this.state;
 
     return (
       <div className="contact-us auth">
@@ -125,7 +126,55 @@ class SignUp extends Component {
                       />
                     </Col>
                   </Row>
-                  <TextInput
+                  <InputGroup className="mb-3 flex input-group1">
+                    <input
+                      className="password-input"
+                      type={openEyes ? "password" : "text"}
+                      label=""
+                      name="password"
+                      placeholder="Password"
+                      value={fields.password}
+                      onChange={(e) => {
+                        this.setState({
+                          fields: {
+                            ...this.state.fields,
+                            password: e.target.value,
+                          },
+                        });
+                      }}
+                    />
+                    <i
+                      onClick={() => this.setState({ openEyes: !openEyes })}
+                      className={
+                        openEyes ? "fa fa-eye-slash fa-1x" : "fa fa-eye fa-1x"
+                      }
+                    ></i>
+                  </InputGroup>
+                  <InputGroup className="mb-3 flex input-group1">
+                    <input
+                      className="password-input"
+                      type={openEyes ? "password" : "text"}
+                      label=""
+                      name="password_confirmation"
+                      placeholder="Confirm Password"
+                      value={fields.password_confirmation}
+                      onChange={(e) => {
+                        this.setState({
+                          fields: {
+                            ...this.state.fields,
+                            password_confirmation: e.target.value,
+                          },
+                        });
+                      }}
+                    />
+                    <i
+                      onClick={() => this.setState({ openEyes: !openEyes })}
+                      className={
+                        openEyes ? "fa fa-eye-slash fa-1x" : "fa fa-eye fa-1x"
+                      }
+                    ></i>
+                  </InputGroup>
+                  {/* <TextInput
                     name="password"
                     label=""
                     placeholder="Password"
@@ -133,13 +182,14 @@ class SignUp extends Component {
                     onFieldChange={onFieldChange}
                     validate={errors.password}
                   />
+                  
                   <TextInput
                     name="password_confirmation"
                     label=""
                     placeholder="Confirm Password"
                     value={fields.password_confirmation}
                     onFieldChange={onFieldChange}
-                  />
+                  /> */}
 
                   <button
                     className="submit-button"

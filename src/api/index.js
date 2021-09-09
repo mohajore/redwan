@@ -4,8 +4,8 @@ export const apiEndPoints = {
     getHomeData: "getHomePageData",
     sendMessage: "sendMessage",
     profile:{
-        ChangeProfile : "ChangeProfile",
-        resetPassword : "resetPassword",
+        ChangeProfile : "user/updateProfile",
+        resetPassword : "/user/updatePassword",
         getUserData  : "user/getUserData",
         checkEmail:"forgot-password",
     }

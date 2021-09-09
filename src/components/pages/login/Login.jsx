@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Container, Row, Modal } from "react-bootstrap";
+import { Col, Container, Row, Modal, InputGroup } from "react-bootstrap";
 import { apiService } from "../../../services/ApiService";
 import { authService } from "../../../services/AuthService";
 import { displayAlert, getResponseErrors } from "../../../utils/misc";
@@ -22,17 +22,23 @@ class Login extends Component {
       password: "",
       checkEmail: "",
     },
+    openEyes: false,
   };
   closeModal = () => {
     this.setState({
       AddAddress: false,
     });
   };
+  //   hide = () => {
+  //     this.setState({ hide: !this.state.hide });
+  //   };
+  //   showEye = () => {
+  //     this.setState({ showEye: !this.state.showEye });
+  //   };
   render() {
     const onFieldChange = (name, value) =>
       this.setState({
         fields: { ...fields, [name]: value },
-
         errors: {
           email: "",
           password: "",
@@ -40,7 +46,7 @@ class Login extends Component {
         },
       });
 
-    const { fields, AddAddress, errors } = this.state;
+    const { fields, AddAddress, errors, openEyes } = this.state;
 
     return (
       <div className="contact-us auth">
@@ -58,14 +64,31 @@ class Login extends Component {
                   onFieldChange={onFieldChange}
                   validate={errors.email}
                 />
-                <TextInput
-                  name="password"
-                  label=""
-                  placeholder="Password"
-                  value={fields.password}
-                  onFieldChange={onFieldChange}
-                  validate={errors.password}
-                />
+                <InputGroup className="mb-3 flex input-group1">
+                  <input
+                    className="password-input"
+                    type={openEyes ? "password" : "text"}
+                    label=""
+                    name="password"
+                    placeholder="Password"
+                    value={fields.password}
+                    onChange={(e) => {
+                      this.setState({
+                        fields: {
+                          ...this.state.fields,
+                          password: e.target.value,
+                        },
+                      });
+                    }}
+                  />
+                  <i
+                    onClick={() => this.setState({ openEyes: !openEyes })}
+                    className={
+                      openEyes ? "fa fa-eye-slash fa-1x" : "fa fa-eye fa-1x"
+                    }
+                  ></i>
+                </InputGroup>
+
                 <span
                   className="forget-password"
                   onClick={() => this.setState({ AddAddress: true })}
@@ -145,7 +168,10 @@ class Login extends Component {
 
   submit = async () => {
     const { fields } = this.state;
-    const { success, data, message, errors } = await authService.login(fields);
+    const { success, data, message, errors } = await authService.login({
+      email: fields.email,
+      password: fields.password,
+    });
 
     if (!success) {
       if (errors) {

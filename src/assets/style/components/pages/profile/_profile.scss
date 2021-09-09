@@ -28,8 +28,9 @@
     position: absolute;
     border: solid 10px $primary-color;
     width: 180px;
+    height: 180px;
     border-radius: 70px;
-    padding: 30px 40px;
+    // padding: 30px 40px;
     top: -64px;
     right: 100px;
     overflow: hidden;
@@ -102,6 +103,7 @@
       position: relative;
       top: auto;
       right: auto;
+      bottom: 0;
       margin: 0 auto 30px;
     }
   }
@@ -117,8 +119,8 @@
       }
     }
     .profile__img {
-      width: 150px;
       border-radius: 55px;
+      width: 180px;
     }
   }
   .profile .input-group .profile-select {

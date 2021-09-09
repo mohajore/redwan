@@ -22,22 +22,24 @@ class Profile extends Component {
     AddAddress: false,
     countries: [],
     fields: {
-      oldPassword: "",
-      newPassword: "",
+      old_password: "",
+      password: "",
       confirmNewPassword: "",
       name: "",
       email: "",
       country: "",
       phone: "",
+      image: "",
     },
     errors: {
-      oldPassword: "",
-      newPassword: "",
+      old_password: "",
+      password: "",
       confirmNewPassword: "",
       name: "",
       email: "",
       country: "",
       phone: "",
+      image: "",
     },
   };
   closeModal = () => {
@@ -48,38 +50,39 @@ class Profile extends Component {
 
   async componentDidMount() {
     const { countries } = await generalServices.getAllCountries();
-
     const { data } = await profileService.getUserData();
 
-    let selectedCountry = countries.find((item) => item.name === data.country);
+    let selectedCountry = countries?.find((item) => item.name == data.country);
+
+    console.log(selectedCountry, "selectedCountry");
     this.setState({
       countries: countries,
 
       fields: {
         ...this.state.fields,
-        country: `+ ${selectedCountry.callingCodes} ${selectedCountry.name}`,
+        // country: `+ ${selectedCountry.callingCodes} ${selectedCountry.name}`,
+        country: ` ${selectedCountry.name}`,
         name: data.name,
         email: data.email,
         phone: data.phone,
+        image: data.image,
       },
     });
   }
 
   render() {
-    // const onFieldChange = (name, value) =>
-    // this.setState({ fields: { ...fields, [name]: value } });
-    //
     const onFieldChange = (name, value) =>
       this.setState({
         fields: { ...fields, [name]: value },
         errors: {
-          oldPassword: "",
-          newPassword: "",
+          old_password: "",
+          password: "",
           confirmNewPassword: "",
           name: "",
           email: "",
           country: "",
           phone: "",
+          image: "",
         },
       });
     //
@@ -90,13 +93,46 @@ class Profile extends Component {
         <Container>
           <h3 className="page-title">Profile</h3>
           <div className="form-box">
-            <input
+            {/* <input
               type="file"
               className="file"
               id="avatar"
               name="avatar"
               accept="image/png, image/jpeg"
+              onChange={(e) => {
+                this.setState({
+                  fields: {
+                    ...this.state.fields,
+                    image: e.target.value,
+                  },
+                });
+              }}
+            /> */}
+
+            <input
+              className="file"
+              type="file"
+              id="avatar"
+              name="avatar"
+              accept="image/png, image/jpeg , image.jpg"
+              multiple
+              onChange={(image) => {
+                if (!image.target.files.length) return;
+                const path = (window.URL || window.webkitURL).createObjectURL(
+                  image.target.files[0]
+                );
+                this.setState({
+                  fields: {
+                    ...this.state.fields,
+                    image: image.target.value,
+                  },
+                  fileImage: image.target.files[0],
+                  imageUploaded: true,
+                  blobImage: path,
+                });
+              }}
             />
+
             <Row>
               <Col md={6} sm={12}>
                 <TextInput
@@ -133,12 +169,15 @@ class Profile extends Component {
                       <option selected value={fields.country}>
                         {fields.country}
                       </option>
-                      {countries.map(({ callingCodes, name }) => {
+                      {/* {countries.map(({ callingCodes, name }) => {
                         return (
                           <option value={name}>
                             +{callingCodes} {name}
                           </option>
                         );
+                      })} */}
+                      {countries.map(({ name }) => {
+                        return <option value={name}>{name}</option>;
                       })}
                     </Form.Select>
                   </Col>
@@ -186,7 +225,14 @@ class Profile extends Component {
 
               <Col md={6} sm={12}>
                 <div className="profile__img">
-                  <img src="/images/radio-host.png" alt="l" />
+                  <img
+                    src={
+                      this.state?.blobImage
+                        ? this.state?.blobImage
+                        : apiService.imageLink + fields.image
+                    }
+                    alt="l"
+                  />
                   <label htmlFor="avatar">Change</label>
                 </div>
               </Col>
@@ -211,20 +257,20 @@ class Profile extends Component {
             <Row>
               <Col lg={12} md={12} sm={12} style={{ marginBottom: "1rem" }}>
                 <TextInput
-                  name="password"
+                  name="old_password"
                   label="Password"
-                  placeholder="password"
+                  placeholder="Password"
+                  value={fields.old_password}
+                  onFieldChange={onFieldChange}
+                  validate={errors.old_password}
+                />
+                <TextInput
+                  name="password"
+                  label="New Password"
+                  placeholder="New Password"
                   value={fields.password}
                   onFieldChange={onFieldChange}
                   validate={errors.password}
-                />
-                <TextInput
-                  name="newPassword"
-                  label="NewPassword"
-                  placeholder="New Password"
-                  value={fields.newPassword}
-                  onFieldChange={onFieldChange}
-                  validate={errors.newPassword}
                 />
                 <TextInput
                   name="confirmNewPassword"
@@ -254,14 +300,25 @@ class Profile extends Component {
     );
   }
   submit = async () => {
-    const { fields } = this.state;
+    const { fields, fileImage } = this.state;
+    let formData = new FormData();
+    formData.append("name", fields.name);
+    formData.append("email", fields.email);
+    formData.append("country", fields.country);
+    formData.append("phone", fields.phone);
+    formData.append("image", fileImage ?? {});
+
     const { success, data, message, errors } =
-      await profileService.ChangeProfile({
-        name: fields.name,
-        email: fields.email,
-        country: fields.country,
-        phone: fields.phone,
-      });
+      await profileService.ChangeProfile(
+        formData
+        //   {
+        //   name: fields.name,
+        //   email: fields.email,
+        //   country: fields.country,
+        //   phone: fields.phone,
+        //   image: fileImage,
+        // }
+      );
 
     if (!success) {
       if (errors) {
@@ -280,23 +337,29 @@ class Profile extends Component {
     const { fields } = this.state;
     const { success, data, message, errors } =
       await profileService.resetPassword({
-        oldPassword: fields.oldPassword,
-        newPassword: fields.newPassword,
-        confirmNewPassword: fields.confirmNewPassword,
+        old_password: fields.old_password,
+        password: fields.password,
+        password_confirmation: fields.confirmNewPassword,
       });
 
     if (!success) {
       if (errors) {
         const handelErrors = getResponseErrors(errors);
         this.setState({
-          errors: handelErrors,
+          errors: {
+            ...this.state.errors,
+            password: handelErrors.password,
+            old_password: handelErrors.old_password,
+          },
         });
         return;
       } else {
         return displayAlert("Error", message, "error");
       }
     }
-    displayAlert("Done", "Your Password Changed", "success");
+    displayAlert("Done", "Your Password Changed", "success").then(() => {
+      this.closeModal();
+    });
   };
 }
 

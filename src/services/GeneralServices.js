@@ -1,12 +1,12 @@
 import { apiService } from "./ApiService";
 import { handleResponse } from "../utils/misc";
 import axios from "axios";
-import dd from "../countries.json";
+import countriesData from "../countries.json";
 import { apiEndPoints } from "../api";
 class GeneralServices {
     async getAllCountries() {
         try {
-            const { countries } = dd;
+            const { countries } = countriesData;
 
             return handleResponse({ success: true, countries });
         } catch ({ response }) {
