@@ -7,7 +7,7 @@ class SelectBlock extends Component {
 
         return (
             <Form.Select aria-label="Default select example">
-                {options.map(() => {
+                {options.map(({ callingCodes }) => {
                     return <option value="1">One</option>;
                 })}
             </Form.Select>

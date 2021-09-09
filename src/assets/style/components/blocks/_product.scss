@@ -15,6 +15,8 @@
         width: 80%;
         margin-bottom: -100px;
         cursor: pointer;
+        height: 280px;
+        object-fit: scale-down;
     }
     i {
         color: #ff485a;
@@ -53,11 +55,25 @@
         font-size: 1rem;
         margin-bottom: 15px;
         cursor: pointer;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
     }
     p {
         color: $secondary-color;
         margin-bottom: 1.5rem;
         font-size: 12px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
     }
 }
 .product--buttons {
@@ -106,5 +122,10 @@
     .product__header .product__header__book-img {
         width: 100%;
         margin-bottom: -100px;
+    }
+}
+@include respond(small-laptop) {
+    .product__header .product__header__book-img {
+        height: 250px;
     }
 }

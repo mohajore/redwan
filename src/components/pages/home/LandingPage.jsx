@@ -7,6 +7,7 @@ function LandingPage() {
     const closeMenu = () => {
         setMenuOpen(false);
     };
+
     return (
         <div className="landing-page">
             <img src="/images/Group 506.png" alt="l" className="img-rectangle" />
