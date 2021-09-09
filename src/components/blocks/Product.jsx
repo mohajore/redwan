@@ -4,6 +4,19 @@ import { apiService } from "../../services/ApiService";
 
 export default function Product({ item: { id, main_image_thumb, price, title, description, is_fav, campaign } }) {
     const [active, setActive] = useState(is_fav);
+    const newPrice = () => {
+        let discountAmount = (price * campaign.percentage) / 100;
+
+        let priceAfterDiscount = 0;
+        if (discountAmount > campaign.fixed_amount) {
+            priceAfterDiscount = price - campaign.fixed_amount;
+
+            return priceAfterDiscount;
+        } else {
+            priceAfterDiscount = price - discountAmount;
+            return priceAfterDiscount;
+        }
+    };
     return (
         <div className="product">
             <div className="product__header">
@@ -17,8 +30,8 @@ export default function Product({ item: { id, main_image_thumb, price, title, de
                 <p>{description}</p>
                 <div className="product--buttons flex">
                     <div className=" flex">
-                        <span>{price}$</span>
-                        <span>{campaign ? "420$" : null}</span>
+                        <span>{campaign ? newPrice() + "$" : null}</span>
+                        <span className={campaign ? "oldPrice" : ""}>{price}$</span>
                     </div>
                     <button title="Add To Cart" className="add-to-cart flex">
                         <img src="/images/Group 7.svg" alt="/" />

@@ -50,6 +50,10 @@
 }
 .product__contents {
     padding: 20px;
+    min-height: 192.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     h3 {
         color: $primary-color;
         font-size: 1rem;
@@ -81,15 +85,14 @@
     div {
         column-gap: 10px;
         span {
-            &:first-child {
-                color: $third-text-color;
-                font-size: 18px;
-                font-weight: bolder;
-            }
-            &:last-child {
-                color: $secondary-color;
-                text-decoration: line-through;
-            }
+            color: $third-text-color;
+            font-size: 18px;
+            font-weight: bolder;
+        }
+        .oldPrice {
+            text-decoration: line-through;
+            color: $secondary-color;
+            font-weight: 100;
         }
     }
     .add-to-cart {
@@ -127,5 +130,11 @@
 @include respond(small-laptop) {
     .product__header .product__header__book-img {
         height: 250px;
+    }
+}
+
+@include respond(small-laptop) {
+    .product__contents {
+        min-height: auto;
     }
 }

@@ -2,6 +2,7 @@ import { apiService } from "./ApiService";
 import { handleResponse } from "../utils/misc";
 import axios from "axios";
 import dd from "../countries.json";
+import { apiEndPoints } from "../api";
 class GeneralServices {
     async getAllCountries() {
         try {
@@ -24,18 +25,17 @@ class GeneralServices {
     //     }
     // }
 
-    // async sendContactMessage(formData) {
-    //     try {
-    //         const newMessage = await apiService
-    //             .authenticated()
-    //             .post(apiEndpoints.general.sendContactMessage, formData)
-    //             .then(({ data }) => data);
-
-    //         return handleResponse({ success: true, ...newMessage });
-    //     } catch ({ response }) {
-    //         return handleResponse({ success: false, ...response?.data });
-    //     }
-    // }
+    async sendContactMessage(messageData) {
+        try {
+            const data = await apiService
+                .authenticated()
+                .post(apiEndPoints.sendMessage, messageData)
+                .then(({ data }) => data);
+            return handleResponse({ success: true, ...data });
+        } catch ({ response }) {
+            return handleResponse({ success: false, ...response?.data });
+        }
+    }
 }
 
 export const generalServices = new GeneralServices();

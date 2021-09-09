@@ -13,7 +13,7 @@ class ApiService {
     }
 
     unauthenticated() {
-        return axios.create({ baseURL: this.baseURL, headers: { Token: this.token, Language: "en" } });
+        return axios.create({ baseURL: this.baseURL, headers: { Token: this.token, Authorization: `Bearer ${this.accessToken}`, Language: "en" } });
     }
 
     storeToken(token) {

@@ -26,7 +26,15 @@ class Login extends Component {
         });
     };
     render() {
-        const onFieldChange = (name, value) => this.setState({ fields: { ...fields, [name]: value }, errors: { email: "", password: "" } });
+        const onFieldChange = (name, value) =>
+            this.setState({
+                fields: { ...fields, [name]: value },
+
+                errors: {
+                    email: "",
+                    password: "",
+                },
+            });
 
         const { fields, AddAddress, errors } = this.state;
 
