@@ -79,7 +79,7 @@ class SignUp extends Component {
                   <TextInput
                     name="name"
                     label=""
-                    placeholder="FULL NAME"
+                    placeholder="Full Name"
                     value={fields.name}
                     onFieldChange={onFieldChange}
                     validate={errors.name}
@@ -128,7 +128,7 @@ class SignUp extends Component {
                   <TextInput
                     name="password"
                     label=""
-                    placeholder="PASSWORD"
+                    placeholder="Password"
                     value={fields.password}
                     onFieldChange={onFieldChange}
                     validate={errors.password}
@@ -136,7 +136,7 @@ class SignUp extends Component {
                   <TextInput
                     name="password_confirmation"
                     label=""
-                    placeholder="CONFIRM PASSWORD"
+                    placeholder="Confirm Password"
                     value={fields.password_confirmation}
                     onFieldChange={onFieldChange}
                   />
