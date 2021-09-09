@@ -11,13 +11,33 @@ import {
 import TextInput from "../../blocks/TextInput";
 import AgentOf from "../home/AgentOf";
 import "../../../assets/style/components/pages/profile/_profile.scss";
+
+import { apiService } from "../../../services/ApiService";
+import { authService } from "../../../services/AuthService";
+import { displayAlert, getResponseErrors } from "../../../utils/misc";
+import { generalServices } from "../../../services/GeneralServices";
+import { profileService } from "../../../services/Profile";
 class Profile extends Component {
   state = {
     AddAddress: false,
+    countries: [],
     fields: {
       oldPassword: "",
       newPassword: "",
       confirmNewPassword: "",
+      name: "",
+      email: "",
+      country: "",
+      phone: "",
+    },
+    errors: {
+      oldPassword: "",
+      newPassword: "",
+      confirmNewPassword: "",
+      name: "",
+      email: "",
+      country: "",
+      phone: "",
     },
   };
   closeModal = () => {
@@ -25,10 +45,45 @@ class Profile extends Component {
       AddAddress: false,
     });
   };
+
+  async componentDidMount() {
+    const { countries } = await generalServices.getAllCountries();
+
+    const { data } = await profileService.getUserData();
+
+    let selectedCountry = countries.find((item) => item.name === data.country);
+    this.setState({
+      countries: countries,
+
+      fields: {
+        ...this.state.fields,
+        country: `+ ${selectedCountry.callingCodes} ${selectedCountry.name}`,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+      },
+    });
+  }
+
   render() {
+    // const onFieldChange = (name, value) =>
+    // this.setState({ fields: { ...fields, [name]: value } });
+    //
     const onFieldChange = (name, value) =>
-      this.setState({ fields: { ...fields, [name]: value } });
-    const { AddAddress, fields } = this.state;
+      this.setState({
+        fields: { ...fields, [name]: value },
+        errors: {
+          oldPassword: "",
+          newPassword: "",
+          confirmNewPassword: "",
+          name: "",
+          email: "",
+          country: "",
+          phone: "",
+        },
+      });
+    //
+    const { AddAddress, fields, errors, countries } = this.state;
     return (
       <div className="contact-us profile auth">
         <div className="page-label" />
@@ -47,34 +102,69 @@ class Profile extends Component {
                 <TextInput
                   name="name"
                   label=""
-                  placeholder="User name"
-                  value=""
+                  placeholder="User Name"
+                  value={fields.name}
+                  onFieldChange={onFieldChange}
+                  validate={errors.name}
                 />
-                <TextInput name="email" label="" placeholder="Email" value="" />
+
+                {/*  */}
+                <TextInput
+                  name="email"
+                  label=""
+                  placeholder="Email"
+                  value={fields.email}
+                  onFieldChange={onFieldChange}
+                  validate={errors.email}
+                />
+                <Row>
+                  <Col lg={4} md={12}>
+                    <Form.Select
+                      aria-label="Default select example"
+                      onChange={({ target }) => {
+                        this.setState({
+                          fields: {
+                            ...fields,
+                            country: target.value,
+                          },
+                        });
+                      }}
+                    >
+                      <option selected value={fields.country}>
+                        {fields.country}
+                      </option>
+                      {countries.map(({ callingCodes, name }) => {
+                        return (
+                          <option value={name}>
+                            +{callingCodes} {name}
+                          </option>
+                        );
+                      })}
+                    </Form.Select>
+                  </Col>
+                  <Col lg={8} md={12}>
+                    <TextInput
+                      name="phone"
+                      label=""
+                      placeholder="Phone Number"
+                      value={fields.phone}
+                      onFieldChange={onFieldChange}
+                      validate={errors.phone}
+                    />
+                  </Col>
+                </Row>
 
                 <InputGroup className="mb-3 flex input-group1">
-                  <Form.Select
-                    className="profile-select"
-                    aria-label="Default select example"
-                  >
-                    <option>+01</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </Form.Select>
-                  <span className="vertical-line"></span>
-                  <input
-                    className="phone-number-input"
-                    type="text"
-                    placeholder="PHONE NUMBER"
-                  />
-                </InputGroup>
-                <InputGroup className="mb-3 flex input-group1">
                   <FormControl
+                    name="yourpass"
                     className="yourpass-input"
                     placeholder="YourPass"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
+                    value={fields.yourpass}
+                    onFieldChange={onFieldChange}
+                    validate={errors.yourpass}
+                    disabled
                   />
                   <button
                     className="reset-button"
@@ -84,7 +174,14 @@ class Profile extends Component {
                   </button>
                 </InputGroup>
 
-                <button className="submit-button">Save</button>
+                <button
+                  className="submit-button"
+                  onClick={() => {
+                    this.submit();
+                  }}
+                >
+                  Save
+                </button>
               </Col>
 
               <Col md={6} sm={12}>
@@ -119,20 +216,23 @@ class Profile extends Component {
                   placeholder="password"
                   value={fields.password}
                   onFieldChange={onFieldChange}
+                  validate={errors.password}
                 />
                 <TextInput
                   name="newPassword"
                   label="NewPassword"
-                  placeholder="newPassword"
+                  placeholder="New Password"
                   value={fields.newPassword}
                   onFieldChange={onFieldChange}
+                  validate={errors.newPassword}
                 />
                 <TextInput
                   name="confirmNewPassword"
                   label="Confirm New Password"
-                  placeholder="confirmNewPassword"
+                  placeholder="confirm New Password"
                   value={fields.confirmNewPassword}
                   onFieldChange={onFieldChange}
+                  validate={errors.confirmNewPassword}
                 />
               </Col>
 
@@ -140,7 +240,7 @@ class Profile extends Component {
                 <button
                   className="submit-button"
                   onClick={() => {
-                    //   this.addUpdateUserLocation();
+                    this.resetPassword();
                   }}
                 >
                   Reset Password
@@ -153,6 +253,51 @@ class Profile extends Component {
       </div>
     );
   }
+  submit = async () => {
+    const { fields } = this.state;
+    const { success, data, message, errors } =
+      await profileService.ChangeProfile({
+        name: fields.name,
+        email: fields.email,
+        country: fields.country,
+        phone: fields.phone,
+      });
+
+    if (!success) {
+      if (errors) {
+        const handelErrors = getResponseErrors(errors);
+        this.setState({
+          errors: handelErrors,
+        });
+        return;
+      } else {
+        return displayAlert("Error", message, "error");
+      }
+    }
+    displayAlert("Done", "Profile Changed", "success");
+  };
+  resetPassword = async () => {
+    const { fields } = this.state;
+    const { success, data, message, errors } =
+      await profileService.resetPassword({
+        oldPassword: fields.oldPassword,
+        newPassword: fields.newPassword,
+        confirmNewPassword: fields.confirmNewPassword,
+      });
+
+    if (!success) {
+      if (errors) {
+        const handelErrors = getResponseErrors(errors);
+        this.setState({
+          errors: handelErrors,
+        });
+        return;
+      } else {
+        return displayAlert("Error", message, "error");
+      }
+    }
+    displayAlert("Done", "Your Password Changed", "success");
+  };
 }
 
 export default Profile;
