@@ -1,20 +1,21 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { apiService } from "../../../services/ApiService";
 
-function BigTitle() {
+function BigTitle({ data: { title, price, description, main_image, id } }) {
     return (
         <Container>
             <div className="big-title">
                 <div className="big-title__contents">
                     <Row>
                         <Col md={3}>
-                            <img src="/images/book@2x.png" alt="k" className="big-title__book-img" />
+                            <img src={main_image ? apiService.imageLink + main_image : "placeholder"} alt="k" className="big-title__book-img" />
                         </Col>
                         <Col md={9}>
                             <div className="big-title__contents__description">
-                                <h3>Big Title</h3>
-                                <p>We are taking the lead among the education companies in the Middle East in the fields of developing print & digital and online solutions that support teachers.</p>
-                                <button>Buy Now</button>
+                                <h3>{title}</h3>
+                                <p>{description}</p>
+                                <button onClick={() => (window.location.href = "/productDetails/" + id)}>Buy Now</button>
                             </div>
                         </Col>
                     </Row>

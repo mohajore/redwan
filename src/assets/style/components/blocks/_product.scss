@@ -106,17 +106,18 @@
         background-color: #fff;
         border: 1px solid $primary-color;
 
-        &:hover {
-            background-color: $primary-color;
-            transition: ease-in-out 0.3s;
-            img {
-                filter: brightness(5);
-            }
-        }
         img {
             transition: ease-in-out 0.3s;
 
             width: 18px;
+        }
+    }
+
+    .added-to-cart {
+        background-color: $primary-color;
+        transition: ease-in-out 0.3s;
+        img {
+            filter: brightness(5);
         }
     }
 }

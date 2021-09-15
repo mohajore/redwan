@@ -7,6 +7,7 @@ import BigTitle from "./BigTitle";
 import AgentOf from "./AgentOf";
 import TheBlog from "./TheBlog";
 import { homeService } from "../../../services/HomeService";
+import MainLoader from "../../blocks/MainLoader";
 
 class Home extends Component {
     state = {
@@ -14,31 +15,42 @@ class Home extends Component {
         featured: [],
         partners: [],
         saleBooks: [],
+        blogs: [],
+        about: "",
+        pageLoader: true,
     };
-    async componentDidMount() {
+    componentDidMount() {
+        this.getHomeData();
+    }
+    getHomeData = async () => {
         const { success, data } = await homeService.getHomeData();
 
         if (!success) return;
 
         this.setState({
             books: data.books,
+            about: data.about,
             featured: data.featured,
             partners: data.partners,
             saleBooks: data.saleBooks,
+            blogs: data.blogs,
+            pageLoader: false,
         });
-    }
+    };
 
     render() {
-        const { books, featured, partners, saleBooks } = this.state;
-        return (
+        const { books, featured, partners, saleBooks, about, pageLoader, blogs } = this.state;
+        return pageLoader ? (
+            <MainLoader />
+        ) : (
             <div className="home">
-                <LandingPage />
-                <AboutBlock />
-                <BigSale />
-                <NewTitles title="New Title" data={books} />
-                <BigTitle />
+                <LandingPage data={featured} />
+                <AboutBlock data={about} />
+                <BigSale data={saleBooks} getHomeData={() => this.getHomeData()} />
+                <NewTitles title="New Title" data={books} reFetchData={() => this.getHomeData()} />
+                <BigTitle data={saleBooks[2]} />
                 <AgentOf />
-                <TheBlog />
+                <TheBlog data={blogs} />
             </div>
         );
     }

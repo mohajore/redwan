@@ -4,9 +4,9 @@ import HorizontalProduct from "../../cart/HorizontalProduct";
 import AgentOf from "../../home/AgentOf";
 
 class OrderDetails extends Component {
-    state = { step: 1, qty: 1, selectedLocation: 0, selectedPayment: 0 };
+    state = { step: 1, qty: 1, selectedLocation: 0, selectedPayment: 0, orderData: this.props.location?.state?.orderData ?? [] };
     render() {
-        const { step, qty, selectedLocation, selectedPayment } = this.state;
+        const { step, qty, selectedLocation, selectedPayment, orderData } = this.state;
         return (
             <div className="contact-us cart">
                 <div className="page-label" />
@@ -23,7 +23,9 @@ class OrderDetails extends Component {
                         <Row>
                             <Col md={6}>
                                 <h4>items</h4>
-                                <HorizontalProduct fromOrders />
+                                {orderData?.order_details?.map((data) => {
+                                    return <HorizontalProduct fromOrders data={data} />;
+                                })}
                             </Col>
                             <Col md={6}>
                                 <div className="invoice">
@@ -34,29 +36,26 @@ class OrderDetails extends Component {
                                             <span>BOOKS</span>
                                             <span>Price</span>
                                         </li>
-                                        <li>
-                                            <span>BOOK 1 NAME</span>
-                                            <span>410$</span>
-                                        </li>
-                                        <li>
-                                            <span>BOOK 2 NAME</span>
-                                            <span>320$</span>
-                                        </li>
-                                        <li>
-                                            <span>BOOK 3 NAME</span>
-                                            <span>100$</span>
-                                        </li>
+                                        {orderData?.order_details?.map(({ quantity, total_price, unit_price, book }) => {
+                                            return (
+                                                <li>
+                                                    <span>{book?.title}</span>
+                                                    <span>{(book?.campaign ? this.newPrice(book?.campaign, book?.price) : book?.price) * quantity}$</span>
+                                                </li>
+                                            );
+                                        })}
+
                                         <li className="tax">
                                             <span>TAX</span>
-                                            <span>180$</span>
+                                            <span>{orderData?.tax_amount}</span>
                                         </li>
                                         <li>
                                             <span>DELEVERY FEE</span>
-                                            <span>50$</span>
+                                            <span>{orderData?.delivery_amount}$</span>
                                         </li>
                                         <li className="total">
                                             <span>TOTAL</span>
-                                            <span>650$</span>
+                                            <span> {orderData?.total_amount * orderData?.tax_amount + (orderData?.delivery_amount + orderData?.total_amount)}$</span>
                                         </li>
                                         {/* invoice location start  */}
 
@@ -64,11 +63,11 @@ class OrderDetails extends Component {
                                             <h5>Delivered to</h5>
 
                                             <div className="location__header flex">
-                                                <h6>Home</h6>
+                                                <h6>{orderData?.user_location?.name}</h6>
                                             </div>
-                                            <p>AMMAN - JORDAN - QUEEN RANIA STREET BUL 15</p>
+                                            <p>{orderData?.user_location?.address}</p>
                                             <div className="location-footer flex">
-                                                <span>+9620000000</span>
+                                                <span>{orderData?.user_location?.phone}</span>
                                             </div>
                                         </div>
                                         {/* invoice location end  */}
@@ -79,7 +78,7 @@ class OrderDetails extends Component {
                                             <h5>Payment by</h5>
 
                                             <div className="location__header flex">
-                                                <h6>CreditCard</h6>
+                                                <h6>{orderData?.payment_method} </h6>
                                             </div>
                                         </div>
                                         {/* invoice Payment end  */}
@@ -95,6 +94,19 @@ class OrderDetails extends Component {
             </div>
         );
     }
+    newPrice = (campaign, price) => {
+        let discountAmount = (price * campaign.percentage) / 100;
+
+        let priceAfterDiscount = 0;
+        if (discountAmount > campaign.fixed_amount) {
+            priceAfterDiscount = price - campaign.fixed_amount;
+
+            return priceAfterDiscount;
+        } else {
+            priceAfterDiscount = price - discountAmount;
+            return priceAfterDiscount;
+        }
+    };
 }
 
 export default OrderDetails;

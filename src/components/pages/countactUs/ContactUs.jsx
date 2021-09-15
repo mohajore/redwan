@@ -1,14 +1,29 @@
 import React, { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { generalServices } from "../../../services/GeneralServices";
+import { homeService } from "../../../services/HomeService";
 import { displayAlert, getResponseErrors } from "../../../utils/misc";
 import TextInput from "../../blocks/TextInput";
 import AgentOf from "../home/AgentOf";
 
 class ContactUs extends Component {
-    state = { fields: { name: "", email: "", message: "" }, errors: { name: "", email: "", message: "" } };
+    state = { footerData: {}, fields: { name: "", email: "", message: "" }, errors: { name: "", email: "", message: "" } };
+
+    componentDidMount() {
+        this.getFooterData();
+    }
+    async getFooterData() {
+        const { success, data } = await generalServices.getFooterData();
+
+        if (!success) return;
+        this.setState({
+            footerData: data,
+            pageLoader: false,
+        });
+    }
+
     render() {
-        const { fields, errors } = this.state;
+        const { fields, errors, footerData } = this.state;
         const onFieldChange = (name, value) => this.setState({ fields: { ...fields, [name]: value }, errors: { name: "", email: "", message: "" } });
 
         return (
@@ -45,17 +60,16 @@ class ContactUs extends Component {
                                         <ul className="addresses-list">
                                             <li>
                                                 <p>email</p>
-                                                <span>info@edwanpublisher.com</span>
+                                                <span>{footerData.defaultBranch?.email}</span>
                                             </li>
 
                                             <li>
                                                 <p>phone</p>
-                                                <span>+962 6 465 36 71</span>
-                                                <span>+962 6 461 64 36</span>
+                                                <span>{footerData.defaultBranch?.phone}</span>
                                             </li>
                                             <li>
                                                 <p>address</p>
-                                                <span>Amman - Jordan, Hussian King Street - Alabdali</span>
+                                                <span>{footerData.defaultBranch?.address}</span>
                                             </li>
                                         </ul>
                                         <ul className="social-media">

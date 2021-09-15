@@ -54,6 +54,17 @@
             color: #fff;
         }
     }
+    .location__delete {
+        border-radius: 50%;
+        border: 1px solid #ff485a;
+        height: 35px;
+        width: 35px;
+        background-color: #fff;
+        color: #ff485a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 .location-modal {
     .modal-title {
@@ -75,5 +86,16 @@
     textarea,
     .form-control {
         font-weight: 100 !important;
+    }
+
+    select {
+        background-color: #f1f1f1;
+        color: #50a433 !important;
+        font-weight: bold;
+        font-size: 18px;
+        border: 0;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        border-color: #ccc !important;
     }
 }

@@ -3,8 +3,7 @@ import { handleResponse } from "../utils/misc";
 import { apiService } from "./ApiService";
 
 class ProfileService {
-
-    async ChangeProfile (userData) {
+    async ChangeProfile(userData) {
         try {
             const data = await apiService
                 .authenticated()
@@ -16,7 +15,7 @@ class ProfileService {
         }
     }
 
-    async resetPassword (PasswordData) {
+    async resetPassword(PasswordData) {
         try {
             const data = await apiService
                 .authenticated()
@@ -28,7 +27,7 @@ class ProfileService {
         }
     }
 
-    async getUserData () {
+    async getUserData() {
         try {
             const data = await apiService
                 .authenticated()
@@ -39,11 +38,11 @@ class ProfileService {
             return handleResponse({ success: false, ...response?.data });
         }
     }
-    async checkEmail (email) {
+    async checkEmail(email) {
         try {
             const data = await apiService
                 .unauthenticated()
-                .post(apiEndPoints.profile.checkEmail,email)
+                .post(apiEndPoints.profile.checkEmail, email)
                 .then(({ data }) => data);
             return handleResponse({ success: true, ...data });
         } catch ({ response }) {
@@ -51,9 +50,41 @@ class ProfileService {
         }
     }
 
+    async getUserFavorite() {
+        try {
+            const data = await apiService
+                .authenticated()
+                .get(apiEndPoints.profile.getUserFavourite)
+                .then(({ data }) => data);
+            return handleResponse({ success: true, ...data });
+        } catch ({ response }) {
+            return handleResponse({ success: false, ...response?.data });
+        }
+    }
 
+    async getUserAddresses() {
+        try {
+            const data = await apiService
+                .authenticated()
+                .get(apiEndPoints.profile.getUserAddresses)
+                .then(({ data }) => data);
+            return handleResponse({ success: true, ...data });
+        } catch ({ response }) {
+            return handleResponse({ success: false, ...response?.data });
+        }
+    }
 
-
+    async getOrders() {
+        try {
+            const data = await apiService
+                .authenticated()
+                .get(apiEndPoints.profile.getOrders)
+                .then(({ data }) => data);
+            return handleResponse({ success: true, ...data });
+        } catch ({ response }) {
+            return handleResponse({ success: false, ...response?.data });
+        }
+    }
 }
 
 export const profileService = new ProfileService();

@@ -1,36 +1,48 @@
 import React, { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { profileService } from "../../../services/Profile";
+import { generalServices } from "../../../services/GeneralServices";
 import MainLoader from "../../blocks/MainLoader";
 import Product from "../../blocks/Product";
-import TextInput from "../../blocks/TextInput";
 import AgentOf from "../home/AgentOf";
 import NewTitles from "../home/NewTitles";
 
-class Favorites extends Component {
+class CategoryPage extends Component {
     state = {
+        title: "",
         books: [],
-        relatedBooks: [],
         pageLoader: true,
     };
 
     componentDidMount() {
-        this.getUserFavorite();
+        this.getCategoryBooks();
+        console.log(this.props.match.params.catType, "this.props.match.params.catType");
     }
-    getUserFavorite = async () => {
-        const { success, data } = await profileService.getUserFavorite();
+    getCategoryBooks = async () => {
+        if (+this.props.match.params.catType === 1) {
+            const { success, data } = await generalServices.getClass(this.props.match.params.id);
 
-        if (!success) return;
+            if (!success) return;
 
-        this.setState({
-            books: data.books,
-            relatedBooks: data.relatedBooks,
-            pageLoader: false,
-        });
+            this.setState({
+                title: data.name,
+
+                books: data?.books,
+                pageLoader: false,
+            });
+        } else {
+            const { success, data } = await generalServices.getSubject(this.props.match.params.id);
+            if (!success) return;
+
+            this.setState({
+                title: data.name,
+                books: data?.books,
+                pageLoader: false,
+            });
+        }
     };
 
     render() {
-        const { products, pageLoader, books, relatedBooks } = this.state;
+        const { products, pageLoader, books, relatedBooks, title } = this.state;
         return pageLoader ? (
             <MainLoader />
         ) : (
@@ -38,7 +50,8 @@ class Favorites extends Component {
                 <div className="page-label" />
                 <div className="favorites-products">
                     <Container>
-                        <h3 className="page-title">my favorites</h3>
+                        <h3 className="page-title">{this.props.match.params.key ?? title}</h3>
+
                         {books?.length > 0 ? (
                             <Row>
                                 {books?.map((item) => {
@@ -68,4 +81,4 @@ class Favorites extends Component {
     }
 }
 
-export default Favorites;
+export default CategoryPage;

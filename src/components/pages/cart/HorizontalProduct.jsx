@@ -1,30 +1,70 @@
 import React from "react";
 import { useState } from "react";
+import { apiService } from "../../../services/ApiService";
+import { generalServices } from "../../../services/GeneralServices";
+import { displayAlert } from "../../../utils/misc";
+import { setUser } from "../../../redux/actions-reducers/user";
+import { useDispatch, useSelector } from "react-redux";
 
-function HorizontalProduct({ withDelete, fromOrders }) {
-    const [qty, setQty] = useState(1);
+function HorizontalProduct({ withDelete, fromOrders, reFetchData, data: { quantity, total_price, unit_price, book } }) {
+    const [qty, setQty] = useState(quantity);
+    const currentUser = useSelector(({ currentUser }) => currentUser);
+
+    const dispatch = useDispatch();
+    const newPrice = () => {
+        let discountAmount = (book?.price * book?.campaign?.percentage) / 100;
+
+        let priceAfterDiscount = 0;
+        if (discountAmount > book?.campaign?.fixed_amount) {
+            priceAfterDiscount = book?.price - book?.campaign?.fixed_amount;
+
+            return priceAfterDiscount;
+        } else {
+            priceAfterDiscount = book?.price - discountAmount;
+            return priceAfterDiscount;
+        }
+    };
+
+    const addBooksToCart = async (id, qty, reFetchData) => {
+        const { success, data } = await generalServices.addToCart(id, qty);
+        if (!success) return;
+        !withDelete && dispatch(setUser({ cart_count: currentUser.cart_count + 1 }));
+
+        reFetchData();
+    };
+
+    const deleteBooksFromCart = async (id, reFetchData) => {
+        const { success, data } = await generalServices.deleteBooksFromCart(id);
+        if (!success) return;
+        displayAlert("Done", "Book Deleted From Cart ", "success");
+        dispatch(setUser({ cart_count: currentUser.cart_count - 1 }));
+
+        reFetchData();
+    };
+
     return (
         <div className="horizontal-product flex">
-            <img src="/images/Book [m] [f].png" alt="l" />
+            <img src={book?.main_image ? apiService.imageLink + book?.main_image : "/images/placeholder.png"} alt="l" />
             <div className="horizontal-product__contents">
                 <div className="horizontal-product__contents__header flex">
-                    <h6>Compass Social Studies Curriculum</h6>
+                    <a href={`/productDetails/${book?.id}`}>{book?.title}</a>
                     {withDelete && (
-                        <button>
+                        <button onClick={() => deleteBooksFromCart(book?.id, reFetchData)}>
                             <i className="fa fa-trash-alt"></i>
                         </button>
                     )}
                 </div>
-                <p>In 2011, AERO (American Education Reaches Out) developed the Standardds & Benchmarks of the Social Studies.</p>
+                <p>{book?.description}</p>
+
                 <div className="horizontal-product__contents__footer flex">
-                    <p>350$</p>
+                    <p>{newPrice()}$</p>
                     {/* qty of product start   */}
 
                     <div className="qty flex">
                         {fromOrders ? (
                             <>
                                 <i class="fa fa-times"></i>
-                                <span style={{ marginLeft: "5px" }}> 1</span>
+                                <span style={{ marginLeft: "5px" }}> {quantity}</span>
                             </>
                         ) : (
                             <>
@@ -33,6 +73,7 @@ function HorizontalProduct({ withDelete, fromOrders }) {
                                     onClick={() => {
                                         if (qty > 1) {
                                             setQty(qty - 1);
+                                            addBooksToCart(book?.id, qty - 1, reFetchData);
                                         }
                                     }}
                                 >
@@ -47,7 +88,11 @@ function HorizontalProduct({ withDelete, fromOrders }) {
                                 {/* plus button start  */}
                                 <span
                                     onClick={() => {
-                                        setQty(qty + 1);
+                                        if (qty < book?.quantity) {
+                                            setQty(qty + 1);
+
+                                            addBooksToCart(book?.id, qty + 1, reFetchData);
+                                        }
                                     }}
                                 >
                                     <i className="fas fa-plus"></i>
