@@ -1,50 +1,51 @@
 import React, { Component } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import TextInput from "../../blocks/TextInput";
+import { Container } from "react-bootstrap";
 import AgentOf from "../home/AgentOf";
 import "../../../assets/style/components/pages/about/_aboutPage.scss";
 import { generalServices } from "../../../services/GeneralServices";
 import MainLoader from "../../blocks/MainLoader";
 
 class AboutPage extends Component {
-    state = { pageData: {}, pageLoader: true };
-    componentDidMount() {
-        this.getPublicPageData();
-    }
+  state = { pageData: {}, pageLoader: true };
+  componentDidMount() {
+    this.getPublicPageData();
+  }
 
-    getPublicPageData = async () => {
-        const { success, data } = await generalServices.getPublicPageData(this.props.match.params.machineName);
+  getPublicPageData = async () => {
+    const { success, data } = await generalServices.getPublicPageData(
+      this.props.match.params.machineName
+    );
 
-        if (!success) return;
+    if (!success) return;
 
-        this.setState({
-            pageData: data,
-            pageLoader: false,
-        });
-    };
+    this.setState({
+      pageData: data,
+      pageLoader: false,
+    });
+  };
 
-    render() {
-        const { pageData, pageLoader } = this.state;
-        return pageLoader ? (
-            <MainLoader />
-        ) : (
-            <div className="about-page contact-us">
-                <div className="page-label" />
-                <Container>
-                    {/* page title start  */}
-                    <h3 className="page-title">{pageData.title}</h3>
-                    {/* page title end   */}
+  render() {
+    const { pageData, pageLoader } = this.state;
+    return pageLoader ? (
+      <MainLoader />
+    ) : (
+      <div className="about-page contact-us">
+        <div className="page-label" />
+        <Container>
+          {/* page title start  */}
+          <h3 className="page-title">{pageData.title}</h3>
+          {/* page title end   */}
 
-                    <div className="about-page__about-passages-container">
-                        {/* main img start */}
-                        <img src="/images/Pencils.png" />
-                        {/* main img end */}
+          <div className="about-page__about-passages-container">
+            {/* main img start */}
+            <img src="/images/Pencils.png" alt="1" />
+            {/* main img end */}
 
-                        {/* about page descriptions start  */}
+            {/* about page descriptions start  */}
 
-                        <p dangerouslySetInnerHTML={{ __html: pageData.text }} />
+            <p dangerouslySetInnerHTML={{ __html: pageData.text }} />
 
-                        {/*  <div className="about-page__first-article">
+            {/*  <div className="about-page__first-article">
                            <h4>What is Lorem Ipsum?</h4>
                             <p>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
@@ -64,13 +65,13 @@ class AboutPage extends Component {
                         <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonoru
                         m et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<
                         /p> */}
-                    </div>
-                    {/* about page descriptions end  */}
-                </Container>
-                <AgentOf />
-            </div>
-        );
-    }
+          </div>
+          {/* about page descriptions end  */}
+        </Container>
+        <AgentOf />
+      </div>
+    );
+  }
 }
 
 export default AboutPage;

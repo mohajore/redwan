@@ -1,6 +1,5 @@
 import { apiService } from "./ApiService";
 import { handleResponse } from "../utils/misc";
-import axios from "axios";
 import countriesData from "../countries.json";
 import { apiEndPoints } from "../api";
 class GeneralServices {
